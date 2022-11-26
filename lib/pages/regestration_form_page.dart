@@ -1,8 +1,13 @@
+import 'dart:convert';
 
-
+import 'package:book_recomended/backend/mysql.dart';
+import 'package:book_recomended/user.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
+
+import 'package:http/http.dart' as http;
 
 class RegisterFormPage extends StatefulWidget {
   const RegisterFormPage({super.key});
@@ -12,11 +17,77 @@ class RegisterFormPage extends StatefulWidget {
 }
 
 class _RegisterFormPageState extends State<RegisterFormPage> {
+  bool _hidePass = true;
+
+  //var db = new Mysql();
+
+  final _firstNameController = TextEditingController();
+  final _secondNameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passController = TextEditingController();
+  final _confirmPassController = TextEditingController();
+  final _socialmediaController = TextEditingController();
+  final _birthdayController = TextEditingController();
+
+  @override
+  void dispose() {
+    _firstNameController.dispose();
+    _secondNameController.dispose();
+    _emailController.dispose();
+    _passController.dispose();
+    _confirmPassController.dispose();
+    _socialmediaController.dispose();
+    _birthdayController.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    
+    super.initState();
+  }
+
+  void getMethod() async {
+    User people = User(
+        _firstNameController.text.trim(),
+        _secondNameController.text.trim(),
+        _emailController.text.trim(),
+        _passController.text.trim(),
+        _birthdayController.text.trim()
+        );
+
+    try {
+      var res =await http.post( 
+        Uri.parse( Mysql.signUp),
+        body: people.toJson(),
+        );
+
+      if(res.statusCode == 200){
+        var resBodySignUp = jsonDecode(res.body);
+        if(resBodySignUp['success'] == true){
+            print("Succsessful sign up");
+        }else{
+          print("всосал");
+        }
+      }
+    } catch (e) {
+      print(e.toString() + "\tвсосал");
+    }
+    // var res = await http.get(Uri.parse(theUrl));
+
+    //var responseBody = jsonDecode(res.body);
+    // print(responseBody);
+    //return responseBody;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Register form"),
+        title: Text("Регистрация"),
+        actions: [
+          IconButton(onPressed: () {}, icon: Icon(Icons.question_mark)),
+        ],
         centerTitle: true,
       ),
       body: Form(
@@ -24,47 +95,170 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
           padding: EdgeInsets.all(16),
           children: [
             TextField(
+              controller: _firstNameController,
               decoration: InputDecoration(
                 labelText: "Имя *",
+                hintText: "Введите ваше имя",
+                icon: Icon(Icons.person),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  borderSide: BorderSide(color: Colors.black, width: 2),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  borderSide: BorderSide(
+                    color: Colors.blue,
+                    width: 2,
+                  ),
+                ),
               ),
             ),
             SizedBox(
               height: 10,
             ),
             TextField(
+              controller: _secondNameController,
               decoration: InputDecoration(
                 labelText: "Фамилия",
+                hintText: "Введите вашу фамилию",
+                icon: Icon(Icons.person),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  borderSide: BorderSide(color: Colors.black, width: 2),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  borderSide: BorderSide(
+                    color: Colors.blue,
+                    width: 2,
+                  ),
+                ),
               ),
             ),
             SizedBox(
               height: 10,
             ),
             TextFormField(
-              decoration: InputDecoration(labelText: "Почта *"),
+              controller: _emailController,
+              decoration: InputDecoration(
+                labelText: "Почта *",
+                hintText: "Введите вашу почту",
+                helperText: "Формат user@gmail.com",
+                icon: Icon(Icons.mail),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  borderSide: BorderSide(color: Colors.black, width: 2),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  borderSide: BorderSide(
+                    color: Colors.blue,
+                    width: 2,
+                  ),
+                ),
+              ),
+              keyboardType: TextInputType.emailAddress,
             ),
             SizedBox(
               height: 10,
             ),
             TextFormField(
-              decoration: InputDecoration(labelText: "Пароль *"),
+              controller: _passController,
+              obscureText: _hidePass,
+              maxLength: 30,
+              decoration: InputDecoration(
+                labelText: "Пароль *",
+                hintText: "A-Z, 0-9",
+                helperText: "Длина пароля не более 30 символов",
+                icon: Icon(Icons.key),
+                suffixIcon: IconButton(
+                  icon:
+                      Icon(_hidePass ? Icons.visibility : Icons.visibility_off),
+                  onPressed: () {
+                    setState(() {
+                      _hidePass = !_hidePass;
+                    });
+                  },
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  borderSide: BorderSide(color: Colors.black, width: 2),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  borderSide: BorderSide(
+                    color: Colors.blue,
+                    width: 2,
+                  ),
+                ),
+              ),
             ),
             SizedBox(
               height: 10,
             ),
             TextFormField(
-              decoration: InputDecoration(labelText: "Повторите пароль *"),
+              controller: _confirmPassController,
+              obscureText: _hidePass,
+              maxLength: 30,
+              decoration: InputDecoration(
+                labelText: "Повторите пароль *",
+                icon: Icon(Icons.key),
+
+                //suffixIcon: Icon(Icons.remove_red_eye),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  borderSide: BorderSide(color: Colors.black, width: 2),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  borderSide: BorderSide(
+                    color: Colors.blue,
+                    width: 2,
+                  ),
+                ),
+              ),
             ),
             SizedBox(
               height: 10,
             ),
             TextFormField(
-              decoration: InputDecoration(labelText: "Социальная сеть"),
+              controller: _socialmediaController,
+              decoration: InputDecoration(
+                labelText: "Социальная сеть",
+                icon: Icon(Icons.people_alt),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  borderSide: BorderSide(color: Colors.black, width: 2),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  borderSide: BorderSide(
+                    color: Colors.blue,
+                    width: 2,
+                  ),
+                ),
+              ),
             ),
             SizedBox(
               height: 10,
             ),
             TextFormField(
-              decoration: InputDecoration(labelText: "Дата рождения *"),
+              controller: _birthdayController,
+              decoration: InputDecoration(
+                labelText: "Дата рождения *",
+                icon: Icon(Icons.cake),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  borderSide: BorderSide(color: Colors.black, width: 2),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  borderSide: BorderSide(
+                    color: Colors.blue,
+                    width: 2,
+                  ),
+                ),
+              ),
             ),
             SizedBox(
               height: 100,
@@ -83,10 +277,9 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
                     child: Text(
                       "Назад",
                       style: TextStyle(
-                          fontSize: 15,
-                          color: Colors.black,  
-                        ),
-                        
+                        fontSize: 15,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                 ),
@@ -94,15 +287,16 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
                   height: 30,
                   width: 125,
                   child: ElevatedButton(
-                    onPressed: (() {}),
+                    onPressed: _submitForm,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xFFD0FFD2),
-                      
                     ),
-                    
                     child: Text(
                       "Отправить",
-                      style: TextStyle(fontSize: 15,color: Colors.black, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
@@ -113,4 +307,26 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
       ),
     );
   }
+
+  void _submitForm() {
+    
+    print("first: ${_firstNameController.text}");
+    print("second: ${_secondNameController.text}");
+    print("email: ${_emailController.text}");
+    print("pass: ${_passController.text}");
+    print("confPass: ${_confirmPassController.text}");
+    print("social: ${_socialmediaController.text}");
+    print("birthday: ${_birthdayController.text}");
+  }
+
+  void fetchData() {
+    // db.getConnection().then((conn) {
+    String sql1 = 'Select * from `таблица поставок spj`;';
+    // conn.query(sql1).then((result) {
+    // for (var row in result){
+    // print(row[0]);
+  }
+  //});
+  //});
+  //}
 }

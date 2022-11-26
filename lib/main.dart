@@ -4,6 +4,7 @@ import 'package:book_recomended/pages/catalog_page.dart';
 import 'package:book_recomended/pages/people_page.dart';
 import 'package:book_recomended/pages/profile_page.dart';
 import 'package:book_recomended/pages/statistic_page.dart';
+import 'package:book_recomended/pages/footer.dart';
 import 'package:flutter/material.dart';
 
 import 'pages/pages.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         Pages.StatisticPage.toString():(context) => StatisticPage(),
         Pages.PeoplePage.toString():(context) => PeoplePage(),
         Pages.ProfilePage.toString():(context) => ProfilePage(),
+        Pages.FooterPage.toString():(context) => Footer(),
       },
     );
   }

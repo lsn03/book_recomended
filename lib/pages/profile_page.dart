@@ -1,3 +1,4 @@
+import 'package:book_recomended/pages/footer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -8,6 +9,7 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       appBar: AppBar(
         actions: [
           IconButton(
@@ -41,6 +43,7 @@ class _ProfileState extends State<Profile> {
       //crossAxisAlignment: CrossAxisAlignment.center,
 
       children: [
+        
         Padding(
           padding: EdgeInsets.all(20),
           child: Row(
@@ -115,6 +118,7 @@ class _ProfileState extends State<Profile> {
             
           ],
         ),
+         
       ],
     );
   }

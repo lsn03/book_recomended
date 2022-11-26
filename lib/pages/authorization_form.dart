@@ -93,7 +93,7 @@ class _AuthorizationFormPageState extends State<AuthorizationFormPage> {
             ),
             ElevatedButton(
               onPressed: (() {
-                Navigator.pushNamed(context, Pages.ProfilePage);
+                Navigator.pushNamed(context, Pages.FooterPage);
               }),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xFFCFFFBE),

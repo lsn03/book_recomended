@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:book_recomended/pages/pages.dart';
 import 'package:book_recomended/backend/mysql.dart';
 import 'package:book_recomended/user.dart';
 import 'package:flutter/foundation.dart';
@@ -270,7 +270,10 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
                   height: 30,
                   width: 125,
                   child: ElevatedButton(
-                    onPressed: (() {}),
+                    onPressed: (() {
+                     // Navigator.pushNamed(context, "/page1");
+                      Navigator.pop(context);
+                    }),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color.fromARGB(255, 252, 255, 220),
                     ),
@@ -310,6 +313,8 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
 
   void _submitForm() {
     
+    Navigator.pushNamed(context, Pages.ProfilePage);
+
     print("first: ${_firstNameController.text}");
     print("second: ${_secondNameController.text}");
     print("email: ${_emailController.text}");

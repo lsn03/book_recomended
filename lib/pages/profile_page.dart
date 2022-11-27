@@ -1,4 +1,7 @@
+
+
 import 'package:book_recomended/pages/footer.dart';
+import 'package:book_recomended/pages/pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -13,7 +16,10 @@ class ProfilePage extends StatelessWidget {
       appBar: AppBar(
         actions: [
           IconButton(
-              onPressed: () {},
+              onPressed: (() {
+                //Navigator.pushNamed(context, Pages.SettingPage);
+
+              }),
               icon: Icon(
                 Icons.settings,
                 color: Colors.black,
@@ -135,3 +141,4 @@ class _ProfileState extends State<Profile> {
     );
   }
 }
+

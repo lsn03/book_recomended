@@ -7,4 +7,5 @@ class Pages{
   static String PeoplePage = "/PeoplePage";
   static String ProfilePage = "/ProfilePage";
    static String FooterPage = "/FooterPage";
+   static String SettingPage = "/SettingPage";
 }

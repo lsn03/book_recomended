@@ -3,6 +3,7 @@ import 'package:book_recomended/pages/card_page.dart';
 import 'package:book_recomended/pages/catalog_page.dart';
 import 'package:book_recomended/pages/people_page.dart';
 import 'package:book_recomended/pages/profile_page.dart';
+import 'package:book_recomended/pages/setting_page.dart';
 import 'package:book_recomended/pages/statistic_page.dart';
 import 'package:book_recomended/pages/footer.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
         Pages.PeoplePage.toString():(context) => PeoplePage(),
         Pages.ProfilePage.toString():(context) => ProfilePage(),
         Pages.FooterPage.toString():(context) => Footer(),
+        Pages.SettingPage.toString():(context) => SettingPage(),
       },
     );
   }

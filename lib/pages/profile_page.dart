@@ -21,7 +21,7 @@ class ProfilePage extends StatelessWidget {
         ],
         automaticallyImplyLeading: false,
         //toolbarHeight: 0,
-        backgroundColor: Color(0xFFD1FFD2),
+       
       ),
       body: Profile(),
     );
@@ -34,7 +34,7 @@ class Profile extends StatefulWidget {
   @override
   State<Profile> createState() => _ProfileState();
 }
-
+final double fs = 20;
 class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
@@ -45,20 +45,30 @@ class _ProfileState extends State<Profile> {
       children: [
         
         Padding(
-          padding: EdgeInsets.all(20),
+          padding: EdgeInsets.fromLTRB(0,0,0,10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               
-              
-              Column(
-                //mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  CircleAvatar(
-                    radius: 60,
+              // backgroundColor: Color(0xFFD1FFD2),
+              Container(
+                decoration: BoxDecoration(
+                   color: Color(0xFFD1FFD2),
+                ),
+                width: 390,
+                height: 180,
+                child: Center(
+                  
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      CircleAvatar(
+                        radius: 60,
+                      ),
+                      Text("Ирина",style: TextStyle(fontSize: fs+4,),),
+                    ],
                   ),
-                  Text("Ирина"),
-                ],
+                ),
               ),
             ],
           ),
@@ -73,21 +83,21 @@ class _ProfileState extends State<Profile> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Нравится: "),
-                    Text("Не нравится: "),
-                    Text("Хочет прочитать: "),
-                    Text("Соц.сеть: "),
+                    Text("Нравится: ",style: TextStyle(fontSize: fs,),),
+                    Text("Не нравится: ",style: TextStyle(fontSize: fs,),),
+                    Text("Хочет прочитать: ",style: TextStyle(fontSize: fs,),),
+                    Text("Соц.сеть: ",style: TextStyle(fontSize: fs,),),
                   ],
                 ),
-                SizedBox(width: 120,),
+                SizedBox(width: 35,),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     
-                    Text(" 125 книг "),
-                    Text("13 книг"),
-                    Text("200 книг"),
-                    Text("t.me/reenashka"),
+                    Text("125 книг ",style: TextStyle(fontSize: fs,),),
+                    Text("13 книг",style: TextStyle(fontSize: fs,),),
+                    Text("200 книг",style: TextStyle(fontSize: fs,),),
+                    Text("t.me/reenashka",style: TextStyle(fontSize: fs,),),
                   ],
                 ),
                 
@@ -102,13 +112,15 @@ class _ProfileState extends State<Profile> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Предпочитаемые жанры:"),
+                  Text("Предпочитаемые жанры:",style: TextStyle(fontSize: fs+2,fontStyle: FontStyle.italic),),
                    Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                       
-                      Text("Фентези, приключения,современная проза, пьесы, научная фантастика, комедия, драма"),
-                    
+                      Text(
+                        "Фентези, приключения,современная проза, пьесы, научная фантастика, комедия, драма",
+                        style: TextStyle(fontSize: fs,),
+                      )
                     ]),
                 ]
               ),

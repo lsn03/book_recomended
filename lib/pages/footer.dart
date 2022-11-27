@@ -33,6 +33,7 @@ class _FooterState extends State<Footer> {
       body: pages[index],
       bottomNavigationBar: NavigationBar(
         height: 60,
+        backgroundColor: Color(0xFFC7DAFF),
         selectedIndex: index,
         onDestinationSelected: ((index) => setState(() {this.index = index;})),
         destinations: [

@@ -313,7 +313,7 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
 
   void _submitForm() {
     
-    Navigator.pushNamed(context, Pages.ProfilePage);
+    Navigator.pushNamed(context, Pages.FooterPage);
 
     print("first: ${_firstNameController.text}");
     print("second: ${_secondNameController.text}");

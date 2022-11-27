@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -15,7 +17,8 @@ class _CardPageState extends State<CardPage> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Color.fromRGBO((255), 255, 255, 1),
+        title: Text("Love&Read"),
+        centerTitle: true,
       ),
       body: Card(),
     );
@@ -40,34 +43,44 @@ class _CardState extends State<Card> {
         if (details.delta.dx > sens) {
           // right swipe
           print("right!!!!!\t!!");
-          right = true;
-          left = false;
+          setState(() {
+            right = true;
+            left = false;
+          });
+          
         } else if (details.delta.dx < -sens) {
           // left swipe;
           print("left \t\t\t flflfll");
-          right = false;
-          left = true;
-        } else {
-          left = right = false;
+          setState(() {
+            right = false;
+            left = true;
+            
+          });
+          
         }
+          
+        
       },
       onVerticalDragUpdate: ((details) {
+        
         if (details.delta.dy > sens) {
           // Down Swipe
           print("down\t\t\t down");
-          down = true;
-          up = false;
+          setState(() {
+            down = true;
+            up = false;
+          });
+          
         } else if (details.delta.dy < -sens) {
           // Up Swipe
           print("up \t\t\tup");
-          down = false;
-          up = true;
+          
+          setState(() {
+            down = false;
+            up = true;
+          });
         }
-      }
-      
-      ),
-      
-      
+      }),
       child: Container(
         decoration: BoxDecoration(
           color: Color(0xFFFFFDD3),

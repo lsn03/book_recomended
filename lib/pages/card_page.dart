@@ -47,22 +47,16 @@ class _CardState extends State<Card> {
             right = true;
             left = false;
           });
-          
         } else if (details.delta.dx < -sens) {
           // left swipe;
           print("left \t\t\t flflfll");
           setState(() {
             right = false;
             left = true;
-            
           });
-          
         }
-          
-        
       },
       onVerticalDragUpdate: ((details) {
-        
         if (details.delta.dy > sens) {
           // Down Swipe
           print("down\t\t\t down");
@@ -70,17 +64,23 @@ class _CardState extends State<Card> {
             down = true;
             up = false;
           });
-          
         } else if (details.delta.dy < -sens) {
           // Up Swipe
           print("up \t\t\tup");
-          
+
           setState(() {
             down = false;
             up = true;
           });
         }
       }),
+      child: Container(
+        decoration: BoxDecoration(color: Colors.white),
+          child: Center(
+              child: Image(
+        image: AssetImage("assets/image/card.jpg"),
+      ))),
+      /*
       child: Container(
         decoration: BoxDecoration(
           color: Color(0xFFFFFDD3),
@@ -93,7 +93,7 @@ class _CardState extends State<Card> {
         child: GestureDetector(
           child: Row(),
         ),
-      ),
+      ),*/
     );
   }
 }

@@ -60,21 +60,6 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
       'password_confirmation': _confirmPassController.text.toString(),
     };
 
-    /*var response =  await http.post(Uri.parse(apiurl),
-        body: jsonEncode(registrationData),
-        headers: {'Content-Type': 'application/json'});
-    
-    response;
-  log( response.body.toString());
-  //print(response.body);
-   */
-    /* await http.post(Uri.parse( apiurl), body: {'name':'test','num':'10'}, headers: {'Accept':'application/json'},).then((response) {
-  print("Response status: ${response.statusCode}");
-  print("Response body: ${response.body}");
-}).catchError((error){
-  print("Error: $error");
-});
-*/
     var response = await http.post(
       Uri.parse(apiurl),
       body: {
@@ -85,13 +70,27 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
         'birthday': _birthdayController.text.toString(),
         'password_confirmation': _confirmPassController.text.toString(),
       },
-      headers: {'Accept': 'application/json'},
+      //headers: {'Accept': 'application/json'},
     );
+    var responseBodySignUp = (response.body);
     print(response.body);
-    //var data = jsonDecode(response.body);
-    //print(response);
-    //.then(onValue)1
-    // .catchError(onError);
+    /*
+    var result = response.body.replaceAll("[","");
+    result = result.replaceAll("]","");
+     result = result.replaceAll(","," ");
+     result = result.replaceAll("{","");
+     result = result.replaceAll("}","");
+     result = result.replaceAll("\"","");
+    print((result));
+    var res = result.split(" ");
+    List<String> finalResult ;
+   // print(res[0].indexOf(":"));
+    print((res[0].substring(res[0].indexOf(":")+1)).trim());
+    */
+   // print(response.body.split("=>")[0]);
+   // print(response.body.split("=>")[1]);
+    //print(response.body.split("=>")[2]);
+    
   }
 
   void getMethod() async {
@@ -361,7 +360,7 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
     startRegistration();
 
     //Navigator.pushNamed(context, Pages.FooterPage);
-
+/*
     print("first: ${_firstNameController.text}");
     print("second: ${_secondNameController.text}");
     print("email: ${_emailController.text}");
@@ -369,6 +368,7 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
     print("confPass: ${_confirmPassController.text}");
     print("social: ${_socialmediaController.text}");
     print("birthday: ${_birthdayController.text}");
+  */
   }
 
   void fetchData() {

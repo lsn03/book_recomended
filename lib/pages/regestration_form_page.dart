@@ -21,6 +21,7 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
   bool _hidePass = true;
   String? errorMessage;
   bool? error;
+  bool isReg = false;
   //var db = new Mysql();
 
   final _firstNameController = TextEditingController();
@@ -57,7 +58,7 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
       'email': _emailController.text.toString(),
       'password': _passController.text.toString(),
       'birthday': _birthdayController.text.toString(),
-      'password_confirmation': _confirmPassController.text.toString(),
+      'password_confirm': _confirmPassController.text.toString(),
     };
 
     var response = await http.post(
@@ -68,12 +69,20 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
         'email': _emailController.text.toString(),
         'password': _passController.text.toString(),
         'birthday': _birthdayController.text.toString(),
-        'password_confirmation': _confirmPassController.text.toString(),
+        'password_confirm': _confirmPassController.text.toString(),
       },
       //headers: {'Accept': 'application/json'},
     );
     var responseBodySignUp = (response.body);
-    print(response.body);
+    //print(response.body);
+    if (response.body.toString() == "{\"signup\":true}" ){
+      error = false;
+      isReg = true;
+    }else{
+      error = true;
+      errorMessage = response.body.toString();
+      print(errorMessage);
+    }
     /*
     var result = response.body.replaceAll("[","");
     result = result.replaceAll("]","");
@@ -92,39 +101,6 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
     //print(response.body.split("=>")[2]);
     
   }
-
-  void getMethod() async {
-    User people = User(
-        _firstNameController.text.trim(),
-        _secondNameController.text.trim(),
-        _emailController.text.trim(),
-        _passController.text.trim(),
-        _birthdayController.text.trim());
-
-    try {
-      var res = await http.post(
-        Uri.parse(Mysql.signUp),
-        body: people.toJson(),
-      );
-
-      if (res.statusCode == 200) {
-        var resBodySignUp = jsonDecode(res.body);
-        if (resBodySignUp['success'] == true) {
-          print("Succsessful sign up");
-        } else {
-          print("всосал");
-        }
-      } 
-    } catch (e) {
-      print(e.toString() + "\tвсосал");
-    }
-    // var res = await http.get(Uri.parse(theUrl));
-
-    //var responseBody = jsonDecode(res.body);
-    // print(responseBody);
-    //return responseBody;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -358,8 +334,10 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
 
   void _submitForm() {
     startRegistration();
-
-    //Navigator.pushNamed(context, Pages.FooterPage);
+    
+    if(isReg){
+      Navigator.pushNamed(context, Pages.FooterPage);
+    }
 /*
     print("first: ${_firstNameController.text}");
     print("second: ${_secondNameController.text}");
@@ -378,7 +356,5 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
     // for (var row in result){
     // print(row[0]);
   }
-  //});
-  //});
-  //}
+
 }

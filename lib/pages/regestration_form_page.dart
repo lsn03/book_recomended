@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:book_recomended/pages/pages.dart';
 import 'package:book_recomended/backend/mysql.dart';
 import 'package:book_recomended/user.dart';
@@ -18,7 +19,8 @@ class RegisterFormPage extends StatefulWidget {
 
 class _RegisterFormPageState extends State<RegisterFormPage> {
   bool _hidePass = true;
-
+  String? errorMessage;
+  bool? error;
   //var db = new Mysql();
 
   final _firstNameController = TextEditingController();
@@ -43,8 +45,53 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
 
   @override
   void initState() {
-    
     super.initState();
+  }
+
+  startRegistration() async {
+    String apiurl = "http://192.168.183.11/love&read/signup.php";
+
+    final Map<String, dynamic> registrationData = {
+      'first_name': _firstNameController.text.toString(),
+      'second_name': _secondNameController.text.toString(),
+      'email': _emailController.text.toString(),
+      'password': _passController.text.toString(),
+      'birthday': _birthdayController.text.toString(),
+      'password_confirmation': _confirmPassController.text.toString(),
+    };
+
+    /*var response =  await http.post(Uri.parse(apiurl),
+        body: jsonEncode(registrationData),
+        headers: {'Content-Type': 'application/json'});
+    
+    response;
+  log( response.body.toString());
+  //print(response.body);
+   */
+    /* await http.post(Uri.parse( apiurl), body: {'name':'test','num':'10'}, headers: {'Accept':'application/json'},).then((response) {
+  print("Response status: ${response.statusCode}");
+  print("Response body: ${response.body}");
+}).catchError((error){
+  print("Error: $error");
+});
+*/
+    var response = await http.post(
+      Uri.parse(apiurl),
+      body: {
+        'first_name': _firstNameController.text.toString(),
+        'second_name': _secondNameController.text.toString(),
+        'email': _emailController.text.toString(),
+        'password': _passController.text.toString(),
+        'birthday': _birthdayController.text.toString(),
+        'password_confirmation': _confirmPassController.text.toString(),
+      },
+      headers: {'Accept': 'application/json'},
+    );
+    print(response.body);
+    //var data = jsonDecode(response.body);
+    //print(response);
+    //.then(onValue)1
+    // .catchError(onError);
   }
 
   void getMethod() async {
@@ -53,20 +100,19 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
         _secondNameController.text.trim(),
         _emailController.text.trim(),
         _passController.text.trim(),
-        _birthdayController.text.trim()
-        );
+        _birthdayController.text.trim());
 
     try {
-      var res =await http.post( 
-        Uri.parse( Mysql.signUp),
+      var res = await http.post(
+        Uri.parse(Mysql.signUp),
         body: people.toJson(),
-        );
+      );
 
-      if(res.statusCode == 200){
+      if (res.statusCode == 200) {
         var resBodySignUp = jsonDecode(res.body);
-        if(resBodySignUp['success'] == true){
-            print("Succsessful sign up");
-        }else{
+        if (resBodySignUp['success'] == true) {
+          print("Succsessful sign up");
+        } else {
           print("всосал");
         }
       }
@@ -271,7 +317,7 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
                   width: 125,
                   child: ElevatedButton(
                     onPressed: (() {
-                     // Navigator.pushNamed(context, "/page1");
+                      // Navigator.pushNamed(context, "/page1");
                       Navigator.pop(context);
                     }),
                     style: ElevatedButton.styleFrom(
@@ -312,8 +358,9 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
   }
 
   void _submitForm() {
-    
-    Navigator.pushNamed(context, Pages.FooterPage);
+    startRegistration();
+
+    //Navigator.pushNamed(context, Pages.FooterPage);
 
     print("first: ${_firstNameController.text}");
     print("second: ${_secondNameController.text}");

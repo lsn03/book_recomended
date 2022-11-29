@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:book_recomended/pages/pages.dart';
-
+import 'package:http/http.dart' as http;
 class AuthorizationFormPage extends StatefulWidget {
   const AuthorizationFormPage({super.key});
 
@@ -12,9 +12,16 @@ class AuthorizationFormPage extends StatefulWidget {
 
 class _AuthorizationFormPageState extends State<AuthorizationFormPage> {
   bool _hidePass = true;
-
+  bool? error;
+  String? errorMessage;
+  bool isReg = false;
   final _emailController = TextEditingController();
   final _passController = TextEditingController();
+  @override
+  void initState() {
+    
+    super.initState();
+  }
   @override
   void dispose() {
     _emailController.dispose();
@@ -92,9 +99,7 @@ class _AuthorizationFormPageState extends State<AuthorizationFormPage> {
               height: 20,
             ),
             ElevatedButton(
-              onPressed: (() {
-                Navigator.pushNamed(context, Pages.FooterPage);
-              }),
+              onPressed:startAuthorization ,
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xFFCFFFBE),
               ),
@@ -133,5 +138,31 @@ class _AuthorizationFormPageState extends State<AuthorizationFormPage> {
         
       ),
     );
+  }
+  startAuthorization() async {
+
+    String apiurl = "http://192.168.241.11/love&read/login.php";
+    var response = await http.post(
+      Uri.parse(apiurl),
+      body: {
+        
+        'email': _emailController.text.toString(),
+        'password': _passController.text.toString(),
+        
+      },
+      //headers: {'Accept': 'application/json'},
+    );
+     if (response.body.toString() == "{\"login\":true}" ){
+      
+      isReg = true;
+      print("isreg??????");
+       Navigator.pushReplacementNamed(context, Pages.FooterPage);
+      //Navigator.pushNamed(context, Pages.FooterPage);
+    }else{
+      error = true;
+      errorMessage = response.body.toString();
+      print(errorMessage);
+    }
+    
   }
 }

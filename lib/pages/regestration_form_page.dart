@@ -49,8 +49,8 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
     super.initState();
   }
 
-  startRegistration() async {
-    String apiurl = "http://192.168.183.11/love&read/signup.php";
+  startRegistration(BuildContext context) async {
+    String apiurl = "http://192.168.241.11/love&read/signup.php";
 
     final Map<String, dynamic> registrationData = {
       'first_name': _firstNameController.text.toString(),
@@ -74,10 +74,11 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
       //headers: {'Accept': 'application/json'},
     );
     var responseBodySignUp = (response.body);
-    //print(response.body);
+   // print(response.body);
     if (response.body.toString() == "{\"signup\":true}" ){
       error = false;
       isReg = true;
+       Navigator.pushReplacementNamed(context, Pages.FooterPage);
     }else{
       error = true;
       errorMessage = response.body.toString();
@@ -333,10 +334,12 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
   }
 
   void _submitForm() {
-    startRegistration();
-    
+    startRegistration(context);
+
     if(isReg){
-      Navigator.pushNamed(context, Pages.FooterPage);
+     // print("nafigator");
+     
+      //Navigator.pushNamed(context, Pages.FooterPage);
     }
 /*
     print("first: ${_firstNameController.text}");

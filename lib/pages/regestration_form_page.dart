@@ -9,6 +9,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class RegisterFormPage extends StatefulWidget {
   const RegisterFormPage({super.key});
@@ -50,7 +51,7 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
   }
 
   startRegistration(BuildContext context) async {
-    String apiurl = "http://192.168.241.11/love&read/signup.php";
+    String apiurl = Mysql.signUp; //"http://192.168.241.11/love&read/signup.php";
 
     final Map<String, dynamic> registrationData = {
       'first_name': _firstNameController.text.toString(),
@@ -78,6 +79,8 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
     if (response.body.toString() == "{\"signup\":true}" ){
       error = false;
       isReg = true;
+      final prefs = await SharedPreferences.getInstance();
+      prefs.setString("userEmail", _emailController.text.toString());
        Navigator.pushReplacementNamed(context, Pages.FooterPage);
     }else{
       error = true;

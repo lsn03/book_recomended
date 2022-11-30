@@ -4,9 +4,15 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:book_recomended/pages/pages.dart';
 import 'package:book_recomended/pages/into_catalog_page.dart';
 
-class CatalogPage extends StatelessWidget {
+
+class CatalogPage extends StatefulWidget {
   const CatalogPage({super.key});
 
+  @override
+  State<CatalogPage> createState() => _CatalogPageState();
+}
+
+class _CatalogPageState extends State<CatalogPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

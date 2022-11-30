@@ -1,4 +1,4 @@
-class Pages{
+class Pages {
   static String RegisterFormPage = "/RegisterFormPage";
   static String AuthorizationFormPage = "/AuthorizationFormPage";
   static String CardPage = "/CardPage";

@@ -14,19 +14,12 @@ class SwipeInterfaceApp extends StatelessWidget {
         color: Colors.transparent,
         child: Container(
           alignment: Alignment.center,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/image/BackMain.jpg"),
-              fit: BoxFit.fill,
-            )
-          ),
+          color: Colors.white,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              AppBar(
-                backgroundColor: Color.fromRGBO(70, 155, 150, 1),
-              ),
+              AppBar(),
               SwipeInterface(),
             ],
           ),

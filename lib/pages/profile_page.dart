@@ -17,7 +17,7 @@ class ProfilePage extends StatelessWidget {
         actions: [
           IconButton(
               onPressed: (() {
-                //Navigator.pushNamed(context, Pages.SettingPage);
+                Navigator.pushNamed(context, Pages.SettingPage);
 
               }),
               icon: Icon(

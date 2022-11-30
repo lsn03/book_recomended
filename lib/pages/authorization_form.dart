@@ -15,6 +15,7 @@ class _AuthorizationFormPageState extends State<AuthorizationFormPage> {
 
   final _emailController = TextEditingController();
   final _passController = TextEditingController();
+
   @override
   void dispose() {
     _emailController.dispose();
@@ -25,112 +26,167 @@ class _AuthorizationFormPageState extends State<AuthorizationFormPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Вход"),
-        centerTitle: true,
-      ),
-      body: Form(
-        child: ListView(padding: EdgeInsets.all(16), children: [
-          
-            SizedBox(height: 180,),
-            TextFormField(
-              controller: _emailController,
-              decoration: InputDecoration(
-                labelText: "Почта *",
-                hintText: "Введите вашу почту",
-                helperText: "Формат user@gmail.com",
-                icon: Icon(Icons.mail),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  borderSide: BorderSide(color: Colors.black, width: 2),
+      // appBar: AppBar(
+      //   title: Text("Вход"),
+      //   centerTitle: true,
+      // ),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/image/backAu_Reg.jpg"),
+            fit: BoxFit.fill,
+          ),
+        ),
+        child: Align(
+          child: Container(
+            height: 550,
+            width: 412,
+            margin: EdgeInsets.symmetric(horizontal: 50),
+            decoration: BoxDecoration(
+              color: Color.fromRGBO(70, 155, 150, 1),
+              border: Border.all(color: Color.fromRGBO(70, 155, 150, 1)),
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Form(
+              child: ListView(padding: EdgeInsets.all(16), children: [
+                Align(
+                  child: Text(
+                    "Вход",
+                    style: TextStyle(
+                      fontSize: 50,
+                      color: Color.fromRGBO(219, 216, 178, 1),
+                    ),
+                  ),
+                  alignment: Alignment.topCenter,
                 ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  borderSide: BorderSide(
-                    color: Colors.blue,
-                    width: 2,
+                SizedBox(
+                  height: 80,
+                ),
+                // Text("Mail"),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 20,
+                  ),
+                  child: TextFormField(
+                    style: TextStyle(color: Color.fromRGBO(58, 106, 103, 1)),
+                    controller: _emailController,
+                    decoration: InputDecoration(
+                      isDense: true,
+                      contentPadding: EdgeInsets.all(15),
+                      filled: true,
+                      fillColor: Color.fromRGBO(235, 226, 215, 1),
+                      hintStyle:
+                          TextStyle(color: Color.fromRGBO(58, 106, 103, 1)),
+                      // labelText: "Почта *",
+                      hintText: "Почта",
+                      suffixIcon: Icon(Icons.mail, color: Color.fromRGBO(39, 59, 74, 1),),
+                      // helperText: "Формат user@gmail.com",
+                      // icon: Icon(Icons.mail),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(0)),
+                        borderSide: BorderSide(
+                            color: Color.fromRGBO(235, 226, 215, 1), width: 0),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(0)),
+                        borderSide: BorderSide(
+                          color: Color.fromRGBO(235, 226, 215, 1),
+                          width: 0,
+                        ),
+                      ),
+                    ),
+                    keyboardType: TextInputType.emailAddress,
                   ),
                 ),
-              ),
-              keyboardType: TextInputType.emailAddress,
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            TextFormField(
-              controller: _passController,
-              obscureText: _hidePass,
-              maxLength: 30,
-              decoration: InputDecoration(
-                labelText: "Пароль *",
-                hintText: "A-Z, 0-9",
-                helperText: "Длина пароля не более 30 символов",
-                icon: Icon(Icons.key),
-                suffixIcon: IconButton(
-                  icon:
-                      Icon(_hidePass ? Icons.visibility : Icons.visibility_off),
-                  onPressed: () {
-                    setState(() {
-                      _hidePass = !_hidePass;
-                    });
-                  },
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  borderSide: BorderSide(color: Colors.black, width: 2),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  borderSide: BorderSide(
-                    color: Colors.blue,
-                    width: 2,
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 40,
+                  ),
+                  child: TextFormField(
+                    style: TextStyle(color: Color.fromRGBO(58, 106, 103, 1)),
+                    controller: _passController,
+                    obscureText: _hidePass,
+                    maxLength: 30,
+                    decoration: InputDecoration(
+                      isDense: true,
+                      contentPadding: EdgeInsets.all(15),
+                      filled: true,
+                      fillColor: Color.fromRGBO(235, 226, 215, 1),
+                      //labelText: "Пароль *",
+                      hintStyle:
+                          TextStyle(color: Color.fromRGBO(58, 106, 103, 1)),
+                      hintText: "Пароль",
+                      //helperText: "Длина пароля не более 30 символов",
+                      //icon: Icon(Icons.key),
+                      suffixIcon: IconButton(
+                        icon: Icon(_hidePass
+                            ? Icons.visibility
+                            : Icons.visibility_off, color: Color.fromRGBO(39, 59, 74, 1),),
+                        onPressed: () {
+                          setState(() {
+                            _hidePass = !_hidePass;
+                          });
+                        },
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(0)),
+                        borderSide: BorderSide(
+                            color: Color.fromRGBO(235, 226, 215, 1), width: 0),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(0)),
+                        borderSide: BorderSide(
+                          color: Color.fromRGBO(235, 226, 215, 1),
+                          width: 0,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            ElevatedButton(
-              onPressed: (() {
-                Navigator.pushNamed(context, Pages.FooterPage);
-              }),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFFCFFFBE),
-              ),
-              child: Text(
-                "Войти",
-                style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.black,
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 50,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text("Или"),
-                ],
-              ),
-            ),
-            ElevatedButton(
-                onPressed: (() {
-                  Navigator.pushNamed(context, Pages.RegisterFormPage);
-                }),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromARGB(255, 252, 255, 220),
-                ),
-                child: Text(
-                  "Регистрация",
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.black,
+                Padding(
+                  padding: EdgeInsets.fromLTRB(39, 22, 39, 2),
+                  child: ElevatedButton(
+                    onPressed: (() {
+                      Navigator.pushNamed(context, Pages.FooterPage);
+                    }),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color.fromRGBO(195, 175, 152, 1),
+                    ),
+                    child: Text(
+                      "Войти",
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Color.fromRGBO(242, 241, 230, 1),
+                      ),
+                    ),
                   ),
-                )),
-          ]),
-        
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 39,
+                    vertical: 0,
+                  ),
+                  child: ElevatedButton(
+                      onPressed: (() {
+                        Navigator.pushNamed(context, Pages.RegisterFormPage);
+                      }),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color.fromRGBO(195, 175, 152, 1),
+                      ),
+                      child: Text(
+                        "Регистрация",
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Color.fromRGBO(242, 241, 230, 1),
+                        ),
+                      )),
+                ),
+              ]),
+            ),
+          ),
+        ),
       ),
     );
   }

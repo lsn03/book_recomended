@@ -43,7 +43,6 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
 
   @override
   void initState() {
-    
     super.initState();
   }
 
@@ -53,20 +52,19 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
         _secondNameController.text.trim(),
         _emailController.text.trim(),
         _passController.text.trim(),
-        _birthdayController.text.trim()
-        );
+        _birthdayController.text.trim());
 
     try {
-      var res =await http.post( 
-        Uri.parse( Mysql.signUp),
+      var res = await http.post(
+        Uri.parse(Mysql.signUp),
         body: people.toJson(),
-        );
+      );
 
-      if(res.statusCode == 200){
+      if (res.statusCode == 200) {
         var resBodySignUp = jsonDecode(res.body);
-        if(resBodySignUp['success'] == true){
-            print("Succsessful sign up");
-        }else{
+        if (resBodySignUp['success'] == true) {
+          print("Succsessful sign up");
+        } else {
           print("всосал");
         }
       }
@@ -83,236 +81,257 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Регистрация"),
-        actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.question_mark)),
-        ],
-        centerTitle: true,
-      ),
-      body: Form(
-        child: ListView(
-          padding: EdgeInsets.all(16),
-          children: [
-            TextField(
-              controller: _firstNameController,
-              decoration: InputDecoration(
-                labelText: "Имя *",
-                hintText: "Введите ваше имя",
-                icon: Icon(Icons.person),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  borderSide: BorderSide(color: Colors.black, width: 2),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  borderSide: BorderSide(
-                    color: Colors.blue,
-                    width: 2,
-                  ),
-                ),
-              ),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/image/backAu_Reg.jpg"),
+            fit: BoxFit.fill,
+          ),
+        ),
+        child: Align(
+          child: Container(
+            height: 613,
+            width: 412,
+            margin: EdgeInsets.symmetric(
+              horizontal: 41,
             ),
-            SizedBox(
-              height: 10,
+            decoration: BoxDecoration(
+              color: Color.fromRGBO(70, 155, 150, 1),
+              border: Border.all(color: Color.fromRGBO(70, 155, 150, 1)),
+              borderRadius: BorderRadius.circular(20),
             ),
-            TextField(
-              controller: _secondNameController,
-              decoration: InputDecoration(
-                labelText: "Фамилия",
-                hintText: "Введите вашу фамилию",
-                icon: Icon(Icons.person),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  borderSide: BorderSide(color: Colors.black, width: 2),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  borderSide: BorderSide(
-                    color: Colors.blue,
-                    width: 2,
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            TextFormField(
-              controller: _emailController,
-              decoration: InputDecoration(
-                labelText: "Почта *",
-                hintText: "Введите вашу почту",
-                helperText: "Формат user@gmail.com",
-                icon: Icon(Icons.mail),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  borderSide: BorderSide(color: Colors.black, width: 2),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  borderSide: BorderSide(
-                    color: Colors.blue,
-                    width: 2,
-                  ),
-                ),
-              ),
-              keyboardType: TextInputType.emailAddress,
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            TextFormField(
-              controller: _passController,
-              obscureText: _hidePass,
-              maxLength: 30,
-              decoration: InputDecoration(
-                labelText: "Пароль *",
-                hintText: "A-Z, 0-9",
-                helperText: "Длина пароля не более 30 символов",
-                icon: Icon(Icons.key),
-                suffixIcon: IconButton(
-                  icon:
-                      Icon(_hidePass ? Icons.visibility : Icons.visibility_off),
-                  onPressed: () {
-                    setState(() {
-                      _hidePass = !_hidePass;
-                    });
-                  },
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  borderSide: BorderSide(color: Colors.black, width: 2),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  borderSide: BorderSide(
-                    color: Colors.blue,
-                    width: 2,
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            TextFormField(
-              controller: _confirmPassController,
-              obscureText: _hidePass,
-              maxLength: 30,
-              decoration: InputDecoration(
-                labelText: "Повторите пароль *",
-                icon: Icon(Icons.key),
-
-                //suffixIcon: Icon(Icons.remove_red_eye),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  borderSide: BorderSide(color: Colors.black, width: 2),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  borderSide: BorderSide(
-                    color: Colors.blue,
-                    width: 2,
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            TextFormField(
-              controller: _socialmediaController,
-              decoration: InputDecoration(
-                labelText: "Социальная сеть",
-                icon: Icon(Icons.people_alt),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  borderSide: BorderSide(color: Colors.black, width: 2),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  borderSide: BorderSide(
-                    color: Colors.blue,
-                    width: 2,
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            TextFormField(
-              controller: _birthdayController,
-              decoration: InputDecoration(
-                labelText: "Дата рождения *",
-                icon: Icon(Icons.cake),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  borderSide: BorderSide(color: Colors.black, width: 2),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  borderSide: BorderSide(
-                    color: Colors.blue,
-                    width: 2,
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 100,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            child: ListView(
               children: [
-                SizedBox(
-                  height: 30,
-                  width: 125,
-                  child: ElevatedButton(
-                    onPressed: (() {
-                     // Navigator.pushNamed(context, "/page1");
-                      Navigator.pop(context);
-                    }),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color.fromARGB(255, 252, 255, 220),
-                    ),
-                    child: Text(
-                      "Назад",
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.black,
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                        child: ElevatedButton(
+                          child: Icon(
+                            Icons.arrow_back_ios_new_rounded,
+                            size: 25,
+                            color: Color.fromRGBO(70, 155, 150, 1),
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Color.fromRGBO(219, 216, 178, 1),
+                            shape: const CircleBorder(),
+                            fixedSize: const Size(40, 40),
+                          ),
+                          onPressed: (() {
+                            Navigator.pushNamed(
+                                context, Pages.AuthorizationFormPage);
+                          }),
+                        ),
+                      ),
+                      Text(
+                        "Регистрация",
+                        style: TextStyle(
+                          fontSize: 40,
+                          color: Color.fromRGBO(219, 216, 178, 1),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 30,
+                    vertical: 10,
+                  ),
+                  child: TextFormField(
+                    style: TextStyle(color: Color.fromRGBO(58, 106, 103, 1)),
+                    controller: _firstNameController,
+                    decoration: InputDecoration(
+                      isDense: true,
+                      contentPadding: EdgeInsets.all(15),
+                      filled: true,
+                      fillColor: Color.fromRGBO(235, 226, 215, 1),
+                      hintStyle:
+                          TextStyle(color: Color.fromRGBO(58, 106, 103, 1)),
+                      hintText: "Имя",
+                      suffixIcon: Icon(Icons.person, color: Color.fromRGBO(39, 59, 74, 1),),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Color.fromRGBO(235, 226, 215, 1), width: 0),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Color.fromRGBO(235, 226, 215, 1),
+                          width: 0,
+                        ),
                       ),
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 30,
-                  width: 125,
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 30,
+                    vertical: 10,
+                  ),
+                  child: TextFormField(
+                    style: TextStyle(color: Color.fromRGBO(58, 106, 103, 1)),
+                    controller: _emailController,
+                    decoration: InputDecoration(
+                      isDense: true,
+                      contentPadding: EdgeInsets.all(15),
+                      filled: true,
+                      fillColor: Color.fromRGBO(235, 226, 215, 1),
+                      hintStyle:
+                          TextStyle(color: Color.fromRGBO(58, 106, 103, 1)),
+                      hintText: "Почта",
+                      suffixIcon: Icon(Icons.mail, color: Color.fromRGBO(39, 59, 74, 1),),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Color.fromRGBO(235, 226, 215, 1), width: 0),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Color.fromRGBO(235, 226, 215, 1),
+                          width: 0,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 30,
+                    vertical: 10,
+                  ),
+                  child: TextFormField(
+                    style: TextStyle(color: Color.fromRGBO(58, 106, 103, 1)),
+                    controller: _passController,
+                    obscureText: _hidePass,
+                    decoration: InputDecoration(
+                      isDense: true,
+                      contentPadding: EdgeInsets.all(15),
+                      filled: true,
+                      fillColor: Color.fromRGBO(235, 226, 215, 1),
+                      hintStyle:
+                          TextStyle(color: Color.fromRGBO(58, 106, 103, 1)),
+                      hintText: "Пароль",
+                      suffixIcon: IconButton(
+                        icon: Icon(_hidePass
+                            ? Icons.visibility
+                            : Icons.visibility_off, color: Color.fromRGBO(39, 59, 74, 1),),
+                        onPressed: () {
+                          setState(() {
+                            _hidePass = !_hidePass;
+                          });
+                        },
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Color.fromRGBO(235, 226, 215, 1), width: 0),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Color.fromRGBO(235, 226, 215, 1),
+                          width: 0,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 30,
+                    vertical: 10,
+                  ),
+                  child: TextFormField(
+                    style: TextStyle(color: Color.fromRGBO(58, 106, 103, 1)),
+                    controller: _passController,
+                    obscureText: _hidePass,
+                    decoration: InputDecoration(
+                      isDense: true,
+                      contentPadding: EdgeInsets.all(15),
+                      filled: true,
+                      fillColor: Color.fromRGBO(235, 226, 215, 1),
+                      hintStyle:
+                          TextStyle(color: Color.fromRGBO(58, 106, 103, 1)),
+                      hintText: "Повторите пароль",
+                      suffixIcon: IconButton(
+                        icon: Icon(_hidePass
+                            ? Icons.visibility
+                            : Icons.visibility_off, color: Color.fromRGBO(39, 59, 74, 1),),
+                        onPressed: () {
+                          setState(() {
+                            _hidePass = !_hidePass;
+                          });
+                        },
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Color.fromRGBO(235, 226, 215, 1), width: 0),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Color.fromRGBO(235, 226, 215, 1),
+                          width: 0,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 30,
+                    vertical: 10,
+                  ),
+                  child: TextFormField(
+                    style: TextStyle(color: Color.fromRGBO(58, 106, 103, 1)),
+                    controller: _birthdayController,
+                    decoration: InputDecoration(
+                      isDense: true,
+                      contentPadding: EdgeInsets.all(15),
+                      filled: true,
+                      fillColor: Color.fromRGBO(235, 226, 215, 1),
+                      hintStyle:
+                          TextStyle(color: Color.fromRGBO(58, 106, 103, 1)),
+                      hintText: "Дата рождения",
+                      suffixIcon: Icon(Icons.calendar_month_sharp, color: Color.fromRGBO(39, 59, 74, 1),),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Color.fromRGBO(235, 226, 215, 1), width: 0),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Color.fromRGBO(235, 226, 215, 1),
+                          width: 0,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(39, 50, 39, 2),
                   child: ElevatedButton(
-                    onPressed: _submitForm,
+                    onPressed: (() {
+                      Navigator.pushNamed(context, Pages.FooterPage);
+                    }),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFFD0FFD2),
+                      backgroundColor: Color.fromRGBO(195, 175, 152, 1),
                     ),
                     child: Text(
-                      "Отправить",
+                      "Войти",
                       style: TextStyle(
-                          fontSize: 15,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
+                        fontSize: 20,
+                        color: Color.fromRGBO(242, 241, 230, 1),
+                      ),
                     ),
                   ),
                 ),
               ],
             ),
-          ],
+          ),
         ),
       ),
     );
   }
 
   void _submitForm() {
-    
     Navigator.pushNamed(context, Pages.FooterPage);
 
     print("first: ${_firstNameController.text}");
@@ -331,7 +350,7 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
     // for (var row in result){
     // print(row[0]);
   }
-  //});
-  //});
-  //}
+//});
+//});
+//}
 }

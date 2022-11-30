@@ -8,4 +8,5 @@ class Pages{
   static String ProfilePage = "/ProfilePage";
    static String FooterPage = "/FooterPage";
    static String SettingPage = "/SettingPage";
+   static String IntoCatalogPage = "/IntoCatalogPage";
 }

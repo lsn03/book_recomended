@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:book_recomended/backend/mysql.dart';
 import 'package:http/http.dart' as http;
 import 'package:book_recomended/pages/footer.dart';
@@ -7,9 +10,16 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
 
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+String? userEmail;
+
+class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +27,7 @@ class ProfilePage extends StatelessWidget {
         actions: [
           IconButton(
               onPressed: (() {
-                //Navigator.pushNamed(context, Pages.SettingPage);
+                Navigator.pushNamed(context, Pages.SettingPage);
               }),
               icon: Icon(
                 Icons.settings,
@@ -32,6 +42,17 @@ class ProfilePage extends StatelessWidget {
   }
 }
 
+int cntNrav = -1;
+int cntNeNrav=-1;
+int cntWannaRead=-1;
+String userName = "";
+bool init = false;
+FetchDataAppbar() async {
+  final prefs = await SharedPreferences.getInstance();
+  //print("FetchData");
+  print("FetchDataAppbar" + "\r");
+}
+
 class Profile extends StatefulWidget {
   const Profile({super.key});
 
@@ -40,7 +61,7 @@ class Profile extends StatefulWidget {
 }
 
 final double fs = 20;
-String? userEmail;
+
 class _ProfileState extends State<Profile> {
   @override
   void initState() {
@@ -50,23 +71,40 @@ class _ProfileState extends State<Profile> {
 
   FetchData() async {
     final prefs = await SharedPreferences.getInstance();
-    //print("FetchData");
-    print("FetchData" + prefs.toString());
-    
-    userEmail = prefs.getString("userEmail");
-    print(userEmail);
-    String apiurl = Mysql.profile;
-   // "http://192.168.241.11/love&read/profile.php";
-    var response = await http
-        .post(Uri.parse(apiurl), body: {
-          'email': prefs.getString("userEmail")
-          }
-            //headers: {'Accept': 'application/json'},
-        );
-    print(response.body);
-    if (response.body.toString() == "{\"login\":true}") {
-      //Navigator.pushNamed(context, Pages.FooterPage);
-    } else {}
+    //print("FetchData" +"\r");
+    if (prefs.containsKey("userEmail")){//&& userEmail==null &&cntNrav==null) {
+      init = true;
+      
+      userEmail = prefs.getString("userEmail");
+      print(userEmail);
+
+      String apiurl = Mysql.profile;
+      // "http://192.168.241.11/love&read/profile.php";
+      var response = await http
+          .post(Uri.parse(apiurl), body: {'email': userEmail}
+              //headers: {'Accept': 'application/json'},
+              );
+      Map<String, dynamic> res = jsonDecode( response.body);
+      userName = res["first_name"]+res["second_name"];
+      cntNrav =int.parse(res["cnt_of_like_book"]);
+      cntNeNrav = int.parse(res["cnt_of_dislike_book"]);
+      cntWannaRead = int.parse(res["cnt_of_wishes_book"]);
+      prefs.setInt("cntNrav", cntNrav);
+      prefs.setInt("cntNeNrav", cntNeNrav);
+      prefs.setInt("cntWannaRead", cntWannaRead);
+      prefs.setString("userName", userName);
+      
+      if (response.body.toString() == "{\"login\":true}") {
+        //Navigator.pushNamed(context, Pages.FooterPage);
+      } else {}
+    }else{
+
+      if(userName==""){
+        log("Exception nahui");
+      }
+
+      log("пользователь уже занесен");
+    }
   }
 
   @override
@@ -96,7 +134,7 @@ class _ProfileState extends State<Profile> {
                         radius: 60,
                       ),
                       Text(
-                        "Ирина",
+                        "$userName",
                         style: TextStyle(
                           fontSize: fs + 4,
                         ),
@@ -135,12 +173,7 @@ class _ProfileState extends State<Profile> {
                         fontSize: fs,
                       ),
                     ),
-                    Text(
-                      "Соц.сеть: ",
-                      style: TextStyle(
-                        fontSize: fs,
-                      ),
-                    ),
+                    
                   ],
                 ),
                 SizedBox(
@@ -150,29 +183,24 @@ class _ProfileState extends State<Profile> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                      "125 книг ",
+                      "$cntNrav книг ",
                       style: TextStyle(
                         fontSize: fs,
                       ),
                     ),
                     Text(
-                      "13 книг",
+                      "$cntNeNrav книг",
                       style: TextStyle(
                         fontSize: fs,
                       ),
                     ),
                     Text(
-                      "200 книг",
+                      "$cntWannaRead книг",
                       style: TextStyle(
                         fontSize: fs,
                       ),
                     ),
-                    Text(
-                      "t.me/reenashka",
-                      style: TextStyle(
-                        fontSize: fs,
-                      ),
-                    ),
+                    
                   ],
                 ),
               ]),

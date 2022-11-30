@@ -197,7 +197,7 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
                       filled: true,
                       fillColor: Color.fromRGBO(235, 226, 215, 1),
                       hintStyle:
-                          TextStyle(color: Color.fromRGBO(58, 106, 103, 1)),
+                      TextStyle(color: Color.fromRGBO(58, 106, 103, 1)),
                       hintText: "Имя",
                       suffixIcon: Icon(Icons.person, color: Color.fromRGBO(39, 59, 74, 1),),
                       enabledBorder: OutlineInputBorder(
@@ -227,7 +227,7 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
                       filled: true,
                       fillColor: Color.fromRGBO(235, 226, 215, 1),
                       hintStyle:
-                          TextStyle(color: Color.fromRGBO(58, 106, 103, 1)),
+                      TextStyle(color: Color.fromRGBO(58, 106, 103, 1)),
                       hintText: "Почта",
                       suffixIcon: Icon(Icons.mail, color: Color.fromRGBO(39, 59, 74, 1),),
                       enabledBorder: OutlineInputBorder(
@@ -258,7 +258,7 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
                       filled: true,
                       fillColor: Color.fromRGBO(235, 226, 215, 1),
                       hintStyle:
-                          TextStyle(color: Color.fromRGBO(58, 106, 103, 1)),
+                      TextStyle(color: Color.fromRGBO(58, 106, 103, 1)),
                       hintText: "Пароль",
                       suffixIcon: IconButton(
                         icon: Icon(_hidePass
@@ -298,7 +298,7 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
                       filled: true,
                       fillColor: Color.fromRGBO(235, 226, 215, 1),
                       hintStyle:
-                          TextStyle(color: Color.fromRGBO(58, 106, 103, 1)),
+                      TextStyle(color: Color.fromRGBO(58, 106, 103, 1)),
                       hintText: "Повторите пароль",
                       suffixIcon: IconButton(
                         icon: Icon(_hidePass
@@ -337,7 +337,7 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
                       filled: true,
                       fillColor: Color.fromRGBO(235, 226, 215, 1),
                       hintStyle:
-                          TextStyle(color: Color.fromRGBO(58, 106, 103, 1)),
+                      TextStyle(color: Color.fromRGBO(58, 106, 103, 1)),
                       hintText: "Дата рождения",
                       suffixIcon: Icon(Icons.calendar_month_sharp, color: Color.fromRGBO(39, 59, 74, 1),),
                       enabledBorder: OutlineInputBorder(

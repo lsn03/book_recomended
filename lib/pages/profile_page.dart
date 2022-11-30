@@ -40,7 +40,7 @@ class Profile extends StatefulWidget {
 }
 
 final double fs = 20;
-
+String? userEmail;
 class _ProfileState extends State<Profile> {
   @override
   void initState() {
@@ -52,7 +52,9 @@ class _ProfileState extends State<Profile> {
     final prefs = await SharedPreferences.getInstance();
     //print("FetchData");
     print("FetchData" + prefs.toString());
-    print(prefs.getString("userEmail"));
+    
+    userEmail = prefs.getString("userEmail");
+    print(userEmail);
     String apiurl = Mysql.profile;
    // "http://192.168.241.11/love&read/profile.php";
     var response = await http

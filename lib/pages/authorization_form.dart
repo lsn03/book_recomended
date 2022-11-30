@@ -27,9 +27,9 @@ class _AuthorizationFormPageState extends State<AuthorizationFormPage> {
   }
   _getUser() async {
     final prefs = await SharedPreferences.getInstance();
-    print(prefs);
-    print(prefs.getString("user"));
-    if (prefs.containsKey('user')){
+    //print(prefs);
+    print("31\t"+ prefs.getString("userEmail").toString());
+    if (prefs.containsKey('userEmail')){
         Navigator.pushReplacementNamed(context, Pages.FooterPage);
     }
   }

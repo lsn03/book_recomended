@@ -1,7 +1,10 @@
+import 'package:book_recomended/backend/mysql.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:book_recomended/pages/pages.dart';
+import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthorizationFormPage extends StatefulWidget {
   const AuthorizationFormPage({super.key});
@@ -12,10 +15,25 @@ class AuthorizationFormPage extends StatefulWidget {
 
 class _AuthorizationFormPageState extends State<AuthorizationFormPage> {
   bool _hidePass = true;
-
+  bool? error;
+  String? errorMessage;
+  bool isReg = false;
   final _emailController = TextEditingController();
   final _passController = TextEditingController();
 
+  @override
+  void initState() {
+    _getUser();
+    super.initState();
+  }
+  _getUser() async {
+    final prefs = await SharedPreferences.getInstance();
+    //print(prefs);
+    print("31\t"+ prefs.getString("userEmail").toString());
+    if (prefs.containsKey('userEmail')){
+        Navigator.pushReplacementNamed(context, Pages.FooterPage);
+    }
+  }
   @override
   void dispose() {
     _emailController.dispose();
@@ -148,9 +166,7 @@ class _AuthorizationFormPageState extends State<AuthorizationFormPage> {
                 Padding(
                   padding: EdgeInsets.fromLTRB(39, 22, 39, 2),
                   child: ElevatedButton(
-                    onPressed: (() {
-                      Navigator.pushNamed(context, Pages.FooterPage);
-                    }),
+                    onPressed: startAuthorization,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color.fromRGBO(195, 175, 152, 1),
                     ),
@@ -189,5 +205,32 @@ class _AuthorizationFormPageState extends State<AuthorizationFormPage> {
         ),
       ),
     );
+  }
+
+  startAuthorization() async {
+    String apiurl = Mysql.login; //"http://192.168.241.11/love&read/login.php";
+    var response = await http.post(
+      Uri.parse(apiurl),
+      body: {
+        'email': _emailController.text.toString(),
+        'password': _passController.text.toString(),
+      },
+      //headers: {'Accept': 'application/json'},
+    );
+    if (response.body.toString() == "{\"login\":true}") {
+      isReg = true;
+      print("isreg??????");
+     
+      final prefs = await SharedPreferences.getInstance();
+      prefs.setString("userEmail", _emailController.text.toString());
+     
+
+      Navigator.pushReplacementNamed(context, Pages.FooterPage);
+      //Navigator.pushNamed(context, Pages.FooterPage);
+    } else {
+      error = true;
+      errorMessage = response.body.toString();
+      print(errorMessage);
+    }
   }
 }

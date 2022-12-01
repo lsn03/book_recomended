@@ -12,18 +12,20 @@ import 'package:flutter/material.dart';
 import 'pages/pages.dart';
 import 'pages/regestration_form_page.dart';
 
-void main() {
+void main()  {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp( MyApp());
 }
 
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
+  
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      
       title: "Register Form Demo",
       home: AuthorizationFormPage(),
       routes: {

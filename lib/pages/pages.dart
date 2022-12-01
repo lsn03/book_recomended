@@ -9,4 +9,8 @@ class Pages {
    static String FooterPage = "/FooterPage";
    static String SettingPage = "/SettingPage";
    static String IntoCatalogPopularPage = "/IntoCatalogPopularPage";
+   static String IntoCatalogLiterPage = "IntoCatalogLiterPage";
+   static String IntoCatalogNotLiterPage = "IntoCatalogNotLiterPage";
+   static String IntoCatalogComicsPage = "IntoCatalogComicsPage";
+   static String IntoCatalogAllBooksPage = "IntoCatalogAllBooksPage";
 }

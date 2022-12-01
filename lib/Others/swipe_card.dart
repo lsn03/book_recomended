@@ -27,7 +27,7 @@ class SwipeCard extends StatelessWidget {
     return Align(
       child: ListView(children: [
         Padding(
-          padding: EdgeInsets.fromLTRB(40, 25, 40, 0),
+          padding: EdgeInsets.fromLTRB(40, 0, 40, 0),
           child: Container(
             height: 440,
             width: 20,
@@ -38,7 +38,8 @@ class SwipeCard extends StatelessWidget {
                 topRight: Radius.circular(46),
               ),
               image: DecorationImage(
-                  image: AssetImage(book_image), fit: BoxFit.fill),
+                  image: AssetImage(book_image),
+                  fit: BoxFit.fill),
             ),
           ),
         ),
@@ -58,27 +59,35 @@ class SwipeCard extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
-                    child:Align(child: Text(
-                        "$book_name",
-                        overflow: TextOverflow.fade,
-                        style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold),
-                      ),),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
+                  child: Align(
+                    child: Text(
+                      "$book_name",
+                      overflow: TextOverflow.fade,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: "OpenSans",
+                      ),
+                    ),
                   ),
+                ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 15.0),
-                  child: Align(child: Text(
-                    "$age_permission+",
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      fontStyle: FontStyle.normal,
+                  child: Align(
+                    child: Text(
+                      "$age_permission+",
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        fontStyle: FontStyle.normal,
+                        fontFamily: "OpenSans",
+                      ),
                     ),
-                  ),),
+                  ),
                 ),
               ],
             ),

@@ -8,14 +8,14 @@ import 'package:flutter/src/widgets/basic.dart';
 import 'dart:core';
 import 'package:flutter/src/painting/box_shadow.dart';
 
-class IntoCatalogPage extends StatefulWidget {
-  const IntoCatalogPage({super.key});
+class IntoCatalogNotLiterPage extends StatefulWidget {
+  const IntoCatalogNotLiterPage({super.key});
 
   @override
-  State<StatefulWidget> createState() => _IntoCatalogfacPage();
+  State<StatefulWidget> createState() => _IntoCatalogNotLiterfacePage();
 }
 
-class _IntoCatalogfacPage extends State<IntoCatalogPage> {
+class _IntoCatalogNotLiterfacePage extends State<IntoCatalogNotLiterPage> {
   // List<Profile> profiles = <Profile>[
   //   Profile(
   //       id: "222",
@@ -60,11 +60,10 @@ final double fs = 17;
 Widget buildBody() {
   return Container(
     decoration: BoxDecoration(
-      image: DecorationImage(
-        image: AssetImage("assets/image/BackMain.jpg"),
-        fit: BoxFit.fill,
-      )
-    ),
+        image: DecorationImage(
+      image: AssetImage("assets/image/BackMain.jpg"),
+      fit: BoxFit.fill,
+    )),
     child: SingleChildScrollView(
       child: Align(
         child: Column(
@@ -72,7 +71,10 @@ Widget buildBody() {
           children: [
             Padding(
               padding: EdgeInsets.fromLTRB(0, 30, 0, 30),
-              child: Text("Популярное", style: TextStyle(fontSize: 32),),
+              child: Text(
+                "Нехудожественная литература",
+                style: TextStyle(fontSize: 28, fontFamily: "OpenSans"),
+              ),
             ),
             Padding(
               padding: EdgeInsets.fromLTRB(0, 0, 0, 30),
@@ -92,15 +94,13 @@ Widget buildBody() {
                           height: 120,
                           width: 105,
                           decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage("assets/bookspreview/WaP.jpg"),
-                              fit: BoxFit.fill,
-                            ),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(5),
-                              topRight: Radius.circular(5),
-                            ),
-                          ),
+                              image: DecorationImage(
+                                image:
+                                    AssetImage("assets/bookspreview/WaP.jpg"),
+                                fit: BoxFit.fill,
+                              ),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5))),
                         ),
                         Container(
                           height: 40,
@@ -123,7 +123,9 @@ Widget buildBody() {
                             child: Text(
                               "Война и мир",
                               style: TextStyle(
-                                  color: Color.fromRGBO(242, 241, 229, 1)),
+                                color: Color.fromRGBO(242, 241, 229, 1),
+                                fontFamily: "OpenSans",
+                              ),
                               overflow: TextOverflow.clip,
                             ),
                           ),
@@ -145,15 +147,13 @@ Widget buildBody() {
                           height: 120,
                           width: 105,
                           decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage("assets/bookspreview/WaP.jpg"),
-                              fit: BoxFit.fill,
-                            ),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(5),
-                              topRight: Radius.circular(5),
-                            ),
-                          ),
+                              image: DecorationImage(
+                                image:
+                                    AssetImage("assets/bookspreview/WaP.jpg"),
+                                fit: BoxFit.fill,
+                              ),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5))),
                         ),
                         Container(
                           height: 40,
@@ -176,121 +176,9 @@ Widget buildBody() {
                             child: Text(
                               "Война и мир",
                               style: TextStyle(
-                                  color: Color.fromRGBO(242, 241, 229, 1)),
-                              overflow: TextOverflow.clip,
-                            ),
-                          ),
-                          alignment: Alignment.center,
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(0, 30, 0, 30),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    height: 160,
-                    width: 105,
-                    decoration: BoxDecoration(
-                      color: Color.fromRGBO(70, 155, 150, 1),
-                      borderRadius: BorderRadius.all(Radius.circular(5)),
-                    ),
-                    child: ListView(
-                      children: [
-                        Container(
-                          height: 120,
-                          width: 105,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage("assets/bookspreview/WaP.jpg"),
-                              fit: BoxFit.fill,
-                            ),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(5),
-                              topRight: Radius.circular(5),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          height: 40,
-                          width: 105,
-                          decoration: BoxDecoration(
-                            color: Color.fromRGBO(70, 155, 150, 1),
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(5),
-                              bottomRight: Radius.circular(5),
-                            ),
-                            boxShadow: <BoxShadow>[
-                              BoxShadow(
-                                color: Color.fromRGBO(0, 0, 0, 0.3),
-                                blurRadius: 1.0,
-                                offset: Offset(0, 3),
-                              )
-                            ],
-                          ),
-                          child: Align(
-                            child: Text(
-                              "Война и мир",
-                              style: TextStyle(
-                                  color: Color.fromRGBO(242, 241, 229, 1)),
-                              overflow: TextOverflow.clip,
-                            ),
-                          ),
-                          alignment: Alignment.center,
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    height: 160,
-                    width: 105,
-                    decoration: BoxDecoration(
-                      color: Color.fromRGBO(70, 155, 150, 1),
-                      borderRadius: BorderRadius.all(Radius.circular(5)),
-                    ),
-                    child: ListView(
-                      children: [
-                        Container(
-                          height: 120,
-                          width: 105,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage("assets/bookspreview/WaP.jpg"),
-                              fit: BoxFit.fill,
-                            ),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(5),
-                              topRight: Radius.circular(5),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          height: 40,
-                          width: 105,
-                          decoration: BoxDecoration(
-                            color: Color.fromRGBO(70, 155, 150, 1),
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(5),
-                              bottomRight: Radius.circular(5),
-                            ),
-                            boxShadow: <BoxShadow>[
-                              BoxShadow(
-                                color: Color.fromRGBO(0, 0, 0, 0.3),
-                                blurRadius: 1.0,
-                                offset: Offset(0, 3),
-                              )
-                            ],
-                          ),
-                          child: Align(
-                            child: Text(
-                              "Война и мир",
-                              style: TextStyle(
-                                  color: Color.fromRGBO(242, 241, 229, 1)),
+                                color: Color.fromRGBO(242, 241, 229, 1),
+                                fontFamily: "OpenSans",
+                              ),
                               overflow: TextOverflow.clip,
                             ),
                           ),
@@ -320,15 +208,13 @@ Widget buildBody() {
                           height: 120,
                           width: 105,
                           decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage("assets/bookspreview/WaP.jpg"),
-                              fit: BoxFit.fill,
-                            ),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(5),
-                              topRight: Radius.circular(5),
-                            ),
-                          ),
+                              image: DecorationImage(
+                                image:
+                                    AssetImage("assets/bookspreview/WaP.jpg"),
+                                fit: BoxFit.fill,
+                              ),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5))),
                         ),
                         Container(
                           height: 40,
@@ -351,7 +237,9 @@ Widget buildBody() {
                             child: Text(
                               "Война и мир",
                               style: TextStyle(
-                                  color: Color.fromRGBO(242, 241, 229, 1)),
+                                color: Color.fromRGBO(242, 241, 229, 1),
+                                fontFamily: "OpenSans",
+                              ),
                               overflow: TextOverflow.clip,
                             ),
                           ),
@@ -373,15 +261,13 @@ Widget buildBody() {
                           height: 120,
                           width: 105,
                           decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage("assets/bookspreview/WaP.jpg"),
-                              fit: BoxFit.fill,
-                            ),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(5),
-                              topRight: Radius.circular(5),
-                            ),
-                          ),
+                              image: DecorationImage(
+                                image:
+                                    AssetImage("assets/bookspreview/WaP.jpg"),
+                                fit: BoxFit.fill,
+                              ),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5))),
                         ),
                         Container(
                           height: 40,
@@ -404,7 +290,123 @@ Widget buildBody() {
                             child: Text(
                               "Война и мир",
                               style: TextStyle(
-                                  color: Color.fromRGBO(242, 241, 229, 1)),
+                                color: Color.fromRGBO(242, 241, 229, 1),
+                                fontFamily: "OpenSans",
+                              ),
+                              overflow: TextOverflow.clip,
+                            ),
+                          ),
+                          alignment: Alignment.center,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 30, 0, 30),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    height: 160,
+                    width: 105,
+                    decoration: BoxDecoration(
+                      color: Color.fromRGBO(70, 155, 150, 1),
+                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                    ),
+                    child: ListView(
+                      children: [
+                        Container(
+                          height: 120,
+                          width: 105,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image:
+                                    AssetImage("assets/bookspreview/WaP.jpg"),
+                                fit: BoxFit.fill,
+                              ),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5))),
+                        ),
+                        Container(
+                          height: 40,
+                          width: 105,
+                          decoration: BoxDecoration(
+                            color: Color.fromRGBO(70, 155, 150, 1),
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(5),
+                              bottomRight: Radius.circular(5),
+                            ),
+                            boxShadow: <BoxShadow>[
+                              BoxShadow(
+                                color: Color.fromRGBO(0, 0, 0, 0.3),
+                                blurRadius: 1.0,
+                                offset: Offset(0, 3),
+                              )
+                            ],
+                          ),
+                          child: Align(
+                            child: Text(
+                              "Война и мир",
+                              style: TextStyle(
+                                color: Color.fromRGBO(242, 241, 229, 1),
+                                fontFamily: "OpenSans",
+                              ),
+                              overflow: TextOverflow.clip,
+                            ),
+                          ),
+                          alignment: Alignment.center,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    height: 160,
+                    width: 105,
+                    decoration: BoxDecoration(
+                      color: Color.fromRGBO(70, 155, 150, 1),
+                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                    ),
+                    child: ListView(
+                      children: [
+                        Container(
+                          height: 120,
+                          width: 105,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image:
+                                    AssetImage("assets/bookspreview/WaP.jpg"),
+                                fit: BoxFit.fill,
+                              ),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5))),
+                        ),
+                        Container(
+                          height: 40,
+                          width: 105,
+                          decoration: BoxDecoration(
+                            color: Color.fromRGBO(70, 155, 150, 1),
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(5),
+                              bottomRight: Radius.circular(5),
+                            ),
+                            boxShadow: <BoxShadow>[
+                              BoxShadow(
+                                color: Color.fromRGBO(0, 0, 0, 0.3),
+                                blurRadius: 1.0,
+                                offset: Offset(0, 3),
+                              )
+                            ],
+                          ),
+                          child: Align(
+                            child: Text(
+                              "Война и мир",
+                              style: TextStyle(
+                                color: Color.fromRGBO(242, 241, 229, 1),
+                                fontFamily: "OpenSans",
+                              ),
                               overflow: TextOverflow.clip,
                             ),
                           ),

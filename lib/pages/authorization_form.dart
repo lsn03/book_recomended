@@ -73,6 +73,7 @@ class _AuthorizationFormPageState extends State<AuthorizationFormPage> {
                     style: TextStyle(
                       fontSize: 50,
                       color: Color.fromRGBO(219, 216, 178, 1),
+                      fontFamily: "OpenSans",
                     ),
                   ),
                   alignment: Alignment.topCenter,

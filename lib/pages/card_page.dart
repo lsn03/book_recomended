@@ -24,9 +24,7 @@ class SwipeInterfaceApp extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              AppBar(
-                backgroundColor: Color.fromRGBO(70, 155, 150, 1),
-              ),
+              Container(height: 50, color: Color.fromRGBO(70, 155, 150, 1),),
               SwipeInterface(),
             ],
           ),

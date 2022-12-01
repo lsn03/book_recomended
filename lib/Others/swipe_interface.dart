@@ -1,11 +1,14 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:flip_card/flip_card.dart';
+import 'package:flip_card/flip_card_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'book.dart';
 import 'swipe_card.dart';
+import 'swipe_card_2.dart';
 
 class SwipeInterface extends StatefulWidget {
   const SwipeInterface({super.key});
@@ -145,7 +148,7 @@ class _SwipeInterfaceState extends State<SwipeInterface> {
           feedback: SizedBox(
             width: constraints.maxWidth,
             height: constraints.maxHeight,
-            child: SwipeCard(
+            child: FlipCard(fill: Fill.fillBack, direction: FlipDirection.VERTICAL,front: SwipeCard(
               id_book: profiles[stackCounter].id_book,
               author_book: profiles[stackCounter].author_book,
               book_name: profiles[stackCounter].book_name,
@@ -155,6 +158,16 @@ class _SwipeInterfaceState extends State<SwipeInterface> {
               annotation_book: profiles[stackCounter].annotation_book,
               book_image: profiles[stackCounter].book_image,
             ),
+            back: SwipeCard2(
+              id_book: profiles[stackCounter].id_book,
+              author_book: profiles[stackCounter].author_book,
+              book_name: profiles[stackCounter].book_name,
+              year: profiles[stackCounter].year,
+              genre_book: profiles[stackCounter].genre_book,
+              age_permission: profiles[stackCounter].age_permission,
+              annotation_book: profiles[stackCounter].annotation_book,
+              book_image: profiles[stackCounter].book_image,
+            ),),
           ),
           childWhenDragging: SwipeCard(
             id_book: profiles[stackCounter+1].id_book,
@@ -166,7 +179,7 @@ class _SwipeInterfaceState extends State<SwipeInterface> {
             annotation_book: profiles[stackCounter+1].annotation_book,
             book_image: profiles[stackCounter+1].book_image,
           ),
-          child: SwipeCard(
+          child: FlipCard(fill: Fill.fillBack, direction: FlipDirection.HORIZONTAL,front: SwipeCard(
             id_book: profiles[stackCounter].id_book,
             author_book: profiles[stackCounter].author_book,
             book_name: profiles[stackCounter].book_name,
@@ -176,6 +189,16 @@ class _SwipeInterfaceState extends State<SwipeInterface> {
             annotation_book: profiles[stackCounter].annotation_book,
             book_image: profiles[stackCounter].book_image,
           ),
+            back: SwipeCard2(
+              id_book: profiles[stackCounter].id_book,
+              author_book: profiles[stackCounter].author_book,
+              book_name: profiles[stackCounter].book_name,
+              year: profiles[stackCounter].year,
+              genre_book: profiles[stackCounter].genre_book,
+              age_permission: profiles[stackCounter].age_permission,
+              annotation_book: profiles[stackCounter].annotation_book,
+              book_image: profiles[stackCounter].book_image,
+            ),),
         ),
       ),
     );

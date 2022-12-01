@@ -27,7 +27,7 @@ class SwipeCard extends StatelessWidget {
     return Align(
       child: ListView(children: [
         Padding(
-          padding: EdgeInsets.fromLTRB(40, 0, 40, 0),
+          padding: EdgeInsets.fromLTRB(40, 25, 40, 0),
           child: Container(
             height: 440,
             width: 20,

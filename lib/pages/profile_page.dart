@@ -72,20 +72,22 @@ class _ProfileState extends State<Profile> {
   FetchData() async {
     final prefs = await SharedPreferences.getInstance();
     //print("FetchData" +"\r");
-    if (prefs.containsKey("userEmail")){//&& userEmail==null &&cntNrav==null) {
+    if (prefs.containsKey("userEmail") && !init){//&& userEmail==null &&cntNrav==null) {
       init = true;
       
       userEmail = prefs.getString("userEmail");
-      print(userEmail);
+      //print(userEmail);
 
       String apiurl = Mysql.profile;
+      //print(apiurl);
       // "http://192.168.241.11/love&read/profile.php";
       var response = await http
           .post(Uri.parse(apiurl), body: {'email': userEmail}
               //headers: {'Accept': 'application/json'},
               );
+      print(response.body);
       Map<String, dynamic> res = jsonDecode( response.body);
-      userName = res["first_name"]+res["second_name"];
+      userName = res["first_name"]+" "+res["second_name"];
       cntNrav =int.parse(res["cnt_of_like_book"]);
       cntNeNrav = int.parse(res["cnt_of_dislike_book"]);
       cntWannaRead = int.parse(res["cnt_of_wishes_book"]);
@@ -93,7 +95,20 @@ class _ProfileState extends State<Profile> {
       prefs.setInt("cntNeNrav", cntNeNrav);
       prefs.setInt("cntWannaRead", cntWannaRead);
       prefs.setString("userName", userName);
-      
+      print(userName);
+      print(cntNrav);
+      print(cntNeNrav);
+      print(cntWannaRead);
+      //print(response.body);
+
+      setState(() {
+        log("setstate");
+        userName = res["first_name"]+" "+res["second_name"];
+        cntNrav =int.parse(res["cnt_of_like_book"]);
+        cntNeNrav = int.parse(res["cnt_of_dislike_book"]);
+        cntWannaRead = int.parse(res["cnt_of_wishes_book"]);
+      });
+
       if (response.body.toString() == "{\"login\":true}") {
         //Navigator.pushNamed(context, Pages.FooterPage);
       } else {}
@@ -102,8 +117,8 @@ class _ProfileState extends State<Profile> {
       if(userName==""){
         log("Exception nahui");
       }
-
-      log("пользователь уже занесен");
+      else
+        log("пользователь уже занесен");
     }
   }
 

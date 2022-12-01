@@ -335,14 +335,12 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
                 Padding(
                   padding: EdgeInsets.fromLTRB(39, 50, 39, 2),
                   child: ElevatedButton(
-                    onPressed: (() {
-                      Navigator.pushNamed(context, Pages.FooterPage);
-                    }),
+                    onPressed: _submitForm,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color.fromRGBO(195, 175, 152, 1),
                     ),
                     child: Text(
-                      "Войти",
+                      "Зарегистрироваться",
                       style: TextStyle(
                         fontSize: 20,
                         color: Color.fromRGBO(242, 241, 230, 1),

@@ -166,9 +166,7 @@ class _AuthorizationFormPageState extends State<AuthorizationFormPage> {
                 Padding(
                   padding: EdgeInsets.fromLTRB(39, 22, 39, 2),
                   child: ElevatedButton(
-                    onPressed: (() {
-                      Navigator.pushNamed(context, Pages.FooterPage);
-                    }),
+                    onPressed: startAuthorization,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color.fromRGBO(195, 175, 152, 1),
                     ),

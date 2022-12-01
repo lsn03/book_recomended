@@ -37,6 +37,10 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   mysql1: ^0.20.0
+  shared_preferences: ^2.0.15
+  flutter_session_manager: ^1.0.3
+  swipe_cards: ^1.0.0
+  flutter_tindercard: ^0.1.7
 
 dev_dependencies:
   flutter_test:
@@ -62,6 +66,9 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/image/
+    - assets/bookspreview/
+    - assets/json/
     - assets/image/stat.jpg
     - assets/image/bg.jpg
     - assets/image/card.jpg
@@ -69,6 +76,7 @@ flutter:
     - assets/image/card.jpg
     - assets/image/card.jpg
      
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -81,17 +89,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
+  fonts:
+   - family: CustomIcons
+     fonts:
+       - asset: fonts/CustomIcons.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

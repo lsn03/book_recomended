@@ -1,187 +1,135 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:book_recomended/pages/pages.dart';
+import 'package:book_recomended/pages/into_catalog_page.dart';
 
-class CatalogPage extends StatelessWidget {
+
+class CatalogPage extends StatefulWidget {
   const CatalogPage({super.key});
 
+  @override
+  State<CatalogPage> createState() => _CatalogPageState();
+}
+
+class _CatalogPageState extends State<CatalogPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Каталог"),
+        title: Text(
+          "Каталог",
+          style: TextStyle(color: Color.fromRGBO(242, 241, 229, 1)),
+        ),
         centerTitle: true,
         automaticallyImplyLeading: false,
+        backgroundColor: Color.fromRGBO(70, 155, 150, 1),
       ),
       body: buildBody(),
     );
   }
 }
+
 final double wdth = 300;
 final double hght = 50;
 final double fs = 17;
+
 Widget buildBody() {
-  return Column(
-    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    
-    children: [
-      
-      
-      Row(
-         mainAxisAlignment: MainAxisAlignment.center,
+  return Container(
+    decoration: BoxDecoration(color: Color.fromRGBO(242, 241, 229, 1)),
+    child: Align(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          SizedBox(
-            height: hght,
-            width: wdth,
-            child: ElevatedButton(
-              onPressed: (() {}),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Color.fromARGB(255, 252, 255, 220),
-              ),
-              child: Text(
-                "Популярное",
-                style: TextStyle(
-                  fontSize: fs,
-                  color: Colors.black,
-                  
+          Padding(
+            padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+            child: SizedBox(
+              width: wdth,
+              height: 60,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color.fromRGBO(195, 175, 152, 1),
                 ),
+                onPressed: (() {
+
+                }),
+                child: Text("Популярное", style: TextStyle(
+                  fontSize: 19,
+                  color: Color.fromRGBO(0, 0, 0, 1),
+                ),),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+            child: SizedBox(
+              width: wdth,
+              height: 60,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color.fromRGBO(195, 175, 152, 1),
+                ),
+                onPressed: () {},
+                child: Text("Художественная литература", style: TextStyle(
+                  fontSize: 19,
+                  color: Color.fromRGBO(0, 0, 0, 1),
+                ),),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+            child: SizedBox(
+              width: wdth,
+              height: 60,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color.fromRGBO(195, 175, 152, 1),
+                ),
+                onPressed: () {},
+                child: Text("Нехудожественная литература", style: TextStyle(
+                  fontSize: 18,
+                  color: Color.fromRGBO(0, 0, 0, 1),
+                ),),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+            child: SizedBox(
+              width: wdth,
+              height: 60,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color.fromRGBO(195, 175, 152, 1),
+                ),
+                onPressed: () {},
+                child: Text("Комиксы, Манга, Артбуки", style: TextStyle(
+                  fontSize: 19,
+                  color: Color.fromRGBO(0, 0, 0, 1),
+                ),),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+            child: SizedBox(
+              width: wdth,
+              height: 60,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color.fromRGBO(195, 175, 152, 1),
+                ),
+                onPressed: () {},
+                child: Text("Все книги", style: TextStyle(
+                  fontSize: 19,
+                  color: Color.fromRGBO(0, 0, 0, 1),
+                ),),
               ),
             ),
           ),
         ],
       ),
-      Row(
-         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: hght,
-            width: wdth,
-            child: ElevatedButton(
-              onPressed: (() {}),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Color.fromARGB(255, 252, 255, 220),
-              ),
-              child: Text(
-                "Художественная литература",
-                style: TextStyle(
-                  fontSize: fs,
-                  color: Colors.black,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-      Row(
-         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: hght,
-            width: wdth,
-            child: ElevatedButton(
-              onPressed: (() {}),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Color.fromARGB(255, 252, 255, 220),
-              ),
-              child: Text(
-                "Нехудожественная литература",
-                style: TextStyle(
-                  fontSize: fs,
-                  color: Colors.black,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-      Row(
-         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: hght,
-            width: wdth,
-            child: ElevatedButton(
-              onPressed: (() {}),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Color.fromARGB(255, 252, 255, 220),
-              ),
-              child: Text(
-                "Книги на иностранных языках",
-                style: TextStyle(
-                  fontSize: fs,
-                  color: Colors.black,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: hght,
-            width: wdth,
-            child: ElevatedButton(
-              onPressed: (() {}),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Color.fromARGB(255, 252, 255, 220),
-              ),
-              child: Text(
-                "Комиксы, Манга, Артбуки",
-                style: TextStyle(
-                  fontSize: fs,
-                  color: Colors.black,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: hght,
-            width: wdth,
-            child: ElevatedButton(
-              onPressed: (() {}),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Color.fromARGB(255, 252, 255, 220),
-              ),
-              child: Text(
-                "Другое",
-                style: TextStyle(
-                  fontSize: fs,
-                  color: Colors.black,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: hght,
-            width: wdth,
-            child: ElevatedButton(
-              onPressed: (() {}),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Color.fromARGB(255, 252, 255, 220),
-              ),
-              child: Text(
-                "Все книги",
-                style: TextStyle(
-                  fontSize: fs,
-                  color: Colors.black,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    ],
+    ),
   );
 }

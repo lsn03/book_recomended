@@ -9,6 +9,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class RegisterFormPage extends StatefulWidget {
   const RegisterFormPage({super.key});
@@ -21,6 +22,7 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
   bool _hidePass = true;
   String? errorMessage;
   bool? error;
+  bool isReg = false;
   //var db = new Mysql();
 
   final _firstNameController = TextEditingController();
@@ -48,8 +50,8 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
     super.initState();
   }
 
-  startRegistration() async {
-    String apiurl = "http://192.168.183.11/love&read/signup.php";
+  startRegistration(BuildContext context) async {
+    String apiurl = Mysql.signUp; //"http://192.168.241.11/love&read/signup.php";
 
     final Map<String, dynamic> registrationData = {
       'first_name': _firstNameController.text.toString(),
@@ -57,24 +59,9 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
       'email': _emailController.text.toString(),
       'password': _passController.text.toString(),
       'birthday': _birthdayController.text.toString(),
-      'password_confirmation': _confirmPassController.text.toString(),
+      'password_confirm': _confirmPassController.text.toString(),
     };
 
-    /*var response =  await http.post(Uri.parse(apiurl),
-        body: jsonEncode(registrationData),
-        headers: {'Content-Type': 'application/json'});
-    
-    response;
-  log( response.body.toString());
-  //print(response.body);
-   */
-    /* await http.post(Uri.parse( apiurl), body: {'name':'test','num':'10'}, headers: {'Accept':'application/json'},).then((response) {
-  print("Response status: ${response.statusCode}");
-  print("Response body: ${response.body}");
-}).catchError((error){
-  print("Error: $error");
-});
-*/
     var response = await http.post(
       Uri.parse(apiurl),
       body: {
@@ -83,49 +70,41 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
         'email': _emailController.text.toString(),
         'password': _passController.text.toString(),
         'birthday': _birthdayController.text.toString(),
-        'password_confirmation': _confirmPassController.text.toString(),
+        'password_confirm': _confirmPassController.text.toString(),
       },
-      headers: {'Accept': 'application/json'},
+      //headers: {'Accept': 'application/json'},
     );
-    print(response.body);
-    //var data = jsonDecode(response.body);
-    //print(response);
-    //.then(onValue)1
-    // .catchError(onError);
-  }
-
-  void getMethod() async {
-    User people = User(
-        _firstNameController.text.trim(),
-        _secondNameController.text.trim(),
-        _emailController.text.trim(),
-        _passController.text.trim(),
-        _birthdayController.text.trim());
-
-    try {
-      var res = await http.post(
-        Uri.parse(Mysql.signUp),
-        body: people.toJson(),
-      );
-
-      if (res.statusCode == 200) {
-        var resBodySignUp = jsonDecode(res.body);
-        if (resBodySignUp['success'] == true) {
-          print("Succsessful sign up");
-        } else {
-          print("всосал");
-        }
-      } 
-    } catch (e) {
-      print(e.toString() + "\tвсосал");
+    var responseBodySignUp = (response.body);
+   // print(response.body);
+    if (response.body.toString() == "{\"signup\":true}" ){
+      error = false;
+      isReg = true;
+      final prefs = await SharedPreferences.getInstance();
+      prefs.setString("userEmail", _emailController.text.toString());
+       Navigator.pushReplacementNamed(context, Pages.FooterPage);
+    }else{
+      error = true;
+      errorMessage = response.body.toString();
+      print(errorMessage);
     }
-    // var res = await http.get(Uri.parse(theUrl));
-
-    //var responseBody = jsonDecode(res.body);
-    // print(responseBody);
-    //return responseBody;
+    /*
+    var result = response.body.replaceAll("[","");
+    result = result.replaceAll("]","");
+     result = result.replaceAll(","," ");
+     result = result.replaceAll("{","");
+     result = result.replaceAll("}","");
+     result = result.replaceAll("\"","");
+    print((result));
+    var res = result.split(" ");
+    List<String> finalResult ;
+   // print(res[0].indexOf(":"));
+    print((res[0].substring(res[0].indexOf(":")+1)).trim());
+    */
+   // print(response.body.split("=>")[0]);
+   // print(response.body.split("=>")[1]);
+    //print(response.body.split("=>")[2]);
+    
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -380,9 +359,8 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
   }
 
   void _submitForm() {
-    Navigator.pushNamed(context, Pages.FooterPage);
-    startRegistration();
-    //Navigator.pushNamed(context, Pages.FooterPage);
+    startRegistration(context);
+/*
     print("first: ${_firstNameController.text}");
     print("second: ${_secondNameController.text}");
     print("email: ${_emailController.text}");
@@ -390,6 +368,7 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
     print("confPass: ${_confirmPassController.text}");
     print("social: ${_socialmediaController.text}");
     print("birthday: ${_birthdayController.text}");
+  */
   }
 
   void fetchData() {
@@ -399,7 +378,5 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
     // for (var row in result){
     // print(row[0]);
   }
-//});
-//});
-//}
+
 }

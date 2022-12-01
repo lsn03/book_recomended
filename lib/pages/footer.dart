@@ -3,6 +3,7 @@ import 'package:book_recomended/pages/catalog_page.dart';
 import 'package:book_recomended/pages/into_catalog_page.dart';
 import 'package:book_recomended/pages/people_page.dart';
 import 'package:book_recomended/pages/profile_page.dart';
+import 'package:book_recomended/pages/setting_page.dart';
 import 'package:book_recomended/pages/statistic_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';

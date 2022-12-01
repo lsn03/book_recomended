@@ -49,6 +49,7 @@ class SwipeCard2 extends StatelessWidget {
                           fontSize: 24,
                           color: Color.fromRGBO(242, 241, 229, 1),
                           fontFamily: "OpenSans",
+                          overflow: TextOverflow.clip,
                         ),
                       ),
                       Padding(

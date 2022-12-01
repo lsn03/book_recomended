@@ -16,17 +16,23 @@ class SwipeInterface extends StatefulWidget {
 class _SwipeInterfaceState extends State<SwipeInterface> {
   List<Profile> profiles = <Profile>[
     Profile(
-        id: "222",
-        userName: "Placeholder 1",
-        userAge: 99,
-        userDescription: "Placeholder 1 user description",
-        profileImageSrc: 'assets/bookspreview/WaP.jpg'),
+        id_book: "1",
+        author_book: "Placeholder 1",
+        book_name: "Placeholder 1",
+        year: 99,
+        genre_book: 'Placeholder 1 user description',
+        age_permission: 99,
+        annotation_book: 'Placeholder 1 user description',
+        book_image: 'assets/bookspreview/WaP.jpg'),
     Profile(
-        id: "333",
-        userName: "Placeholder 2",
-        userAge: 99,
-        userDescription: "Placeholder 2 user description",
-        profileImageSrc: 'assets/bookspreview/WaP.jpg'),
+        id_book: "2",
+        author_book: "Placeholder 2",
+        book_name: "Placeholder 2",
+        year: 99,
+        genre_book: 'Placeholder 2 user description',
+        age_permission: 99,
+        annotation_book: 'Placeholder 2 user description',
+        book_image: 'assets/bookspreview/WaP.jpg'),
   ];
 
   int stackCounter = 0;
@@ -48,7 +54,7 @@ class _SwipeInterfaceState extends State<SwipeInterface> {
     });
   }
 
-  _SwipeInterfaceState() {
+  _SwipeInterfaceState(){
     loadJsonData();
   }
 
@@ -135,26 +141,35 @@ class _SwipeInterfaceState extends State<SwipeInterface> {
             width: constraints.maxWidth,
             height: constraints.maxHeight,
             child: SwipeCard(
-              id: profiles[stackCounter].id,
-              userName: profiles[stackCounter].userName,
-              userAge: profiles[stackCounter].userAge,
-              userDescription: profiles[stackCounter].userDescription,
-              profileImageSrc: profiles[stackCounter].profileImageSrc,
+              id_book: profiles[stackCounter].id_book,
+              author_book: profiles[stackCounter].author_book,
+              book_name: profiles[stackCounter].book_name,
+              year: profiles[stackCounter].year,
+              genre_book: profiles[stackCounter].genre_book,
+              age_permission: profiles[stackCounter].age_permission,
+              annotation_book: profiles[stackCounter].annotation_book,
+              book_image: profiles[stackCounter].book_image,
             ),
           ),
           childWhenDragging: SwipeCard(
-            id: profiles[stackCounter + 1].id,
-            userName: profiles[stackCounter + 1].userName,
-            userAge: profiles[stackCounter + 1].userAge,
-            userDescription: profiles[stackCounter + 1].userDescription,
-            profileImageSrc: profiles[stackCounter + 1].profileImageSrc,
+            id_book: profiles[stackCounter+1].id_book,
+            author_book: profiles[stackCounter+1].author_book,
+            book_name: profiles[stackCounter+1].book_name,
+            year: profiles[stackCounter+1].year,
+            genre_book: profiles[stackCounter+1].genre_book,
+            age_permission: profiles[stackCounter+1].age_permission,
+            annotation_book: profiles[stackCounter+1].annotation_book,
+            book_image: profiles[stackCounter+1].book_image,
           ),
           child: SwipeCard(
-            id: profiles[stackCounter].id,
-            userName: profiles[stackCounter].userName,
-            userAge: profiles[stackCounter].userAge,
-            userDescription: profiles[stackCounter].userDescription,
-            profileImageSrc: profiles[stackCounter].profileImageSrc,
+            id_book: profiles[stackCounter].id_book,
+            author_book: profiles[stackCounter].author_book,
+            book_name: profiles[stackCounter].book_name,
+            year: profiles[stackCounter].year,
+            genre_book: profiles[stackCounter].genre_book,
+            age_permission: profiles[stackCounter].age_permission,
+            annotation_book: profiles[stackCounter].annotation_book,
+            book_image: profiles[stackCounter].book_image,
           ),
         ),
       ),

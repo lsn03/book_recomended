@@ -25,9 +25,10 @@ class SwipeCard2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Align(
+      alignment: Alignment.center,
       child: ListView(children: [
         Padding(
-          padding: EdgeInsets.fromLTRB(40, 25, 40, 0),
+          padding: EdgeInsets.fromLTRB(40, 0, 40, 0),
           child: Container(
             height: 548,
             width: 20,
@@ -48,6 +49,7 @@ class SwipeCard2 extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 24,
                           color: Color.fromRGBO(242, 241, 229, 1),
+                          fontFamily: "OpenSans",
                         ),
                       ),
                       Padding(
@@ -64,7 +66,7 @@ class SwipeCard2 extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
                   child: Container(
-                    // height: 180,
+                    height: 210,
                     width: 302,
                     decoration: BoxDecoration(
                       color: Color.fromRGBO(235, 226, 215, 1),
@@ -83,7 +85,10 @@ class SwipeCard2 extends StatelessWidget {
                         child: Align(
                           child: Text(
                             "Аннотация",
-                            style: TextStyle(fontSize: 15),
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontFamily: "OpenSans",
+                            ),
                           ),
                           alignment: Alignment.topLeft,
                         ),
@@ -91,10 +96,15 @@ class SwipeCard2 extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.all(10),
                         child: Align(
-                          child: Text(
-                            "$annotation_book",
-                            style: TextStyle(fontSize: 13),
-                          ),
+                          child: SingleChildScrollView(
+                            child: Container(
+                              height: 150,
+                              child: Text(
+                              "$annotation_book",
+                              style: TextStyle(fontSize: 13),
+                              overflow: TextOverflow.clip,
+                            ),
+                          ),),
                           alignment: Alignment.center,
                         ),
                       ),
@@ -128,7 +138,10 @@ class SwipeCard2 extends StatelessWidget {
                                     vertical: 0, horizontal: 10),
                                 child: Text(
                                   "Фэнтэзи",
-                                  style: TextStyle(fontSize: 15),
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontFamily: "OpenSans",
+                                  ),
                                 ),
                               ),
                             ),
@@ -157,7 +170,10 @@ class SwipeCard2 extends StatelessWidget {
                                     vertical: 0, horizontal: 10),
                                 child: Text(
                                   "Романы",
-                                  style: TextStyle(fontSize: 15),
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontFamily: "OpenSans",
+                                  ),
                                 ),
                               ),
                             ),
@@ -190,7 +206,10 @@ class SwipeCard2 extends StatelessWidget {
                                     vertical: 0, horizontal: 10),
                                 child: Text(
                                   "Классика",
-                                  style: TextStyle(fontSize: 15),
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontFamily: "OpenSans",
+                                  ),
                                 ),
                               ),
                             ),
@@ -219,7 +238,10 @@ class SwipeCard2 extends StatelessWidget {
                                     vertical: 0, horizontal: 10),
                                 child: Text(
                                   "Приключения",
-                                  style: TextStyle(fontSize: 15),
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontFamily: "OpenSans",
+                                  ),
                                 ),
                               ),
                             ),
@@ -276,7 +298,6 @@ class SwipeCard2 extends StatelessWidget {
         //   ),
         // ),
       ]),
-      alignment: Alignment.center,
     );
   }
 }

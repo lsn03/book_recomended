@@ -26,4 +26,7 @@ class CustomIcons {
   static const IconData statistic = IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData bookchoose = IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData communty = IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData broken_heart = IconData(0xe805, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData heart = IconData(0xe806, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData open_book = IconData(0xe807, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

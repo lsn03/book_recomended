@@ -27,7 +27,7 @@ class SwipeCard extends StatelessWidget {
     return Align(
       child: ListView(children: [
         Padding(
-          padding: EdgeInsets.fromLTRB(40, 25, 40, 0),
+          padding: EdgeInsets.fromLTRB(40, 0, 40, 0),
           child: Container(
             height: 440,
             width: 20,
@@ -65,9 +65,11 @@ class SwipeCard extends StatelessWidget {
                       "$book_name",
                       overflow: TextOverflow.fade,
                       style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold),
+                        color: Colors.white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: "OpenSans",
+                      ),
                     ),
                   ),
                 ),
@@ -81,6 +83,7 @@ class SwipeCard extends StatelessWidget {
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
                         fontStyle: FontStyle.normal,
+                        fontFamily: "OpenSans",
                       ),
                     ),
                   ),

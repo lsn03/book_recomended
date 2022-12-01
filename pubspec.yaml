@@ -87,6 +87,9 @@ flutter:
    - family: CustomIcons
      fonts:
        - asset: fonts/CustomIcons.ttf
+   - family: OpenSans
+     fonts:
+       - asset: fonts/OpenSans_Condensed-Regular.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

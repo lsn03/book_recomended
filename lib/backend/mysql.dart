@@ -6,4 +6,5 @@ class Mysql {
   static const signUp = "$hostConnect/signup.php";
   static const login = "$hostConnect/login.php";
   static const profile = "$hostConnect/profile.php";
+  static const loadBooks = "$hostConnect/loadBooks.php";
 }

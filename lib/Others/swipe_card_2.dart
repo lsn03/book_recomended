@@ -4,9 +4,9 @@ class SwipeCard2 extends StatelessWidget {
   final String id_book;
   final String author_book;
   final String book_name;
-  final int year;
+  final String year;
   final String genre_book;
-  final int age_permission;
+  final String age_permission;
   final String annotation_book;
   final String book_image;
 
@@ -34,7 +34,8 @@ class SwipeCard2 extends StatelessWidget {
             decoration: BoxDecoration(
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.all(Radius.circular(46)),
-                color: Color.fromRGBO(70, 155, 150, 1)),
+                color: Color.fromRGBO(70, 155, 150, 1),
+               ),
             child: Column(
               children: [
                 Padding(

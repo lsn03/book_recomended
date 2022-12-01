@@ -64,14 +64,14 @@ class SwipeCard2 extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                          child: Icon(
-                            Icons.send,
-                            size: 20,
-                            color: Color.fromRGBO(242, 241, 229, 1),
-                          ),
-                        ),
+                        // Padding(
+                        //   padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                        //   child: Icon(
+                        //     Icons.send,
+                        //     size: 20,
+                        //     color: Color.fromRGBO(242, 241, 229, 1),
+                        //   ),
+                        // ),
                       ],
                     ),
                   ),

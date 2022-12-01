@@ -29,7 +29,7 @@ class _ProfilePageState extends State<ProfilePage> {
           Align(
             child: IconButton(
               onPressed: (() {
-                Navigator.pushNamed(context, Pages.AuthorizationFormPage);
+                LogOut(context);
               }),
               icon: Icon(
                 Icons.exit_to_app_outlined,
@@ -65,6 +65,12 @@ int cntNeNrav = -1;
 int cntWannaRead = -1;
 String userName = "";
 bool init = false;
+LogOut (BuildContext context) async{
+  final prefs = await SharedPreferences.getInstance();
+  prefs.clear();
+  init = false;
+  Navigator.pushReplacementNamed(context, Pages.AuthorizationFormPage);
+}
 
 FetchDataAppbar() async {
   final prefs = await SharedPreferences.getInstance();
@@ -111,9 +117,9 @@ class _ProfileState extends State<Profile> {
       cntNrav = int.parse(res["cnt_of_like_book"]);
       cntNeNrav = int.parse(res["cnt_of_dislike_book"]);
       cntWannaRead = int.parse(res["cnt_of_wishes_book"]);
-      prefs.setInt("cntNrav", cntNrav);
-      prefs.setInt("cntNeNrav", cntNeNrav);
-      prefs.setInt("cntWannaRead", cntWannaRead);
+      prefs.setInt("cnt_of_like_book", cntNrav);
+      prefs.setInt("cnt_of_dislike_book", cntNeNrav);
+      prefs.setInt("cnt_of_wishes_book", cntWannaRead);
       prefs.setString("userName", userName);
       /*
       print(userName);
@@ -137,8 +143,19 @@ class _ProfileState extends State<Profile> {
     } else {
       if (userName == "") {
         log("Exception nahui");
-      } else
+      } else{
         log("пользователь уже занесен");
+        if (prefs.getInt("cnt_of_like_book")!=cntNrav || cntNeNrav !=prefs.getInt("cnt_of_dislike_book") || cntWannaRead != prefs.getInt("cnt_of_wishes_book")){
+          setState(() {
+
+             cntNrav = prefs.getInt("cnt_of_like_book")!;
+            cntNeNrav =prefs.getInt("cnt_of_dislike_book")!;
+            cntWannaRead = prefs.getInt("cnt_of_wishes_book")!;
+          });
+         
+        }
+      }
+        
     }
   }
 

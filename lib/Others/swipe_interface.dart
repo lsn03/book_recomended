@@ -121,7 +121,7 @@ class _SwipeInterfaceState extends State<SwipeInterface> {
     );
     Map<String, dynamic> res = jsonDecode(response.body);
 
-    
+       
 
     prefs.setInt("cnt_of_wishes_book", cnt_of_wishes_book);
     prefs.setInt("cnt_of_like_book", cnt_of_like_book);

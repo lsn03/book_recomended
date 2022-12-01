@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
       
       title: "Register Form Demo",
       home: AuthorizationFormPage(),
+      //home: Footer(),
       routes: {
         Pages.RegisterFormPage.toString():(context) => RegisterFormPage(),
         Pages.AuthorizationFormPage.toString():(context) => AuthorizationFormPage(),

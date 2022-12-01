@@ -186,7 +186,7 @@ class _ProfileState extends State<Profile> {
                           width: 125,
                           child: Align(
                             child: Text(
-                              "Irina",
+                              "$userName",
                               style: TextStyle(
                                   fontSize: 16,
                                   fontFamily: "OpenSans",

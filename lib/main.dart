@@ -37,6 +37,7 @@ class MyApp extends StatelessWidget {
       // theme: ThemeData(fontFamily: "OpenSans"),
       title: "Register Form Demo",
       home: AuthorizationFormPage(),
+      //home: Footer(),
       routes: {
         Pages.RegisterFormPage.toString():(context) => RegisterFormPage(),
         Pages.AuthorizationFormPage.toString():(context) => AuthorizationFormPage(),

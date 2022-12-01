@@ -4,9 +4,9 @@ class Profile {
   final String id_book;
   final String author_book;
   final String book_name;
-  final int year;
+  final String year;
   final String genre_book;
-  final int age_permission;
+  final String age_permission;
   final String annotation_book;
   final String book_image;
 
@@ -27,9 +27,9 @@ class Profile {
       id_book: json['id_book'],
       author_book: json['author_book'],
       book_name: json['book_name'],
-      year: json['year'],
+      year: (json['year']),
       genre_book: json['genre_book'],
-      age_permission: json['age_permission'],
+      age_permission:( json['age_permission']),
       annotation_book: json['annotation_book'],
       book_image: json['book_image'],
     );

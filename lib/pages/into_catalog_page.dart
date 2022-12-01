@@ -16,30 +16,30 @@ class IntoCatalogPage extends StatefulWidget {
 }
 
 class _IntoCatalogfacPage extends State<IntoCatalogPage> {
-  List<Profile> profiles = <Profile>[
-    Profile(
-        id: "222",
-        userName: "Placeholder 1",
-        userAge: 99,
-        userDescription: "Placeholder 1 user description",
-        profileImageSrc: 'assets/bookspreview/WaP.jpg'),
-    Profile(
-        id: "333",
-        userName: "Placeholder 2",
-        userAge: 99,
-        userDescription: "Placeholder 2 user description",
-        profileImageSrc: 'assets/bookspreview/WaP.jpg'),
-  ];
+  // List<Profile> profiles = <Profile>[
+  //   Profile(
+  //       id: "222",
+  //       userName: "Placeholder 1",
+  //       userAge: 99,
+  //       userDescription: "Placeholder 1 user description",
+  //       profileImageSrc: 'assets/bookspreview/WaP.jpg'),
+  //   Profile(
+  //       id: "333",
+  //       userName: "Placeholder 2",
+  //       userAge: 99,
+  //       userDescription: "Placeholder 2 user description",
+  //       profileImageSrc: 'assets/bookspreview/WaP.jpg'),
+  // ];
 
-  loadJsonData() async {
-    String jsonData = await rootBundle.loadString('assets/json/books.json');
-    setState(() {
-      profiles = json
-          .decode(jsonData)
-          .map<Profile>((dataPoint) => Profile.fromJson(dataPoint))
-          .toList();
-    });
-  }
+  // loadJsonData() async {
+  //   String jsonData = await rootBundle.loadString('assets/json/books.json');
+  //   setState(() {
+  //     profiles = json
+  //         .decode(jsonData)
+  //         .map<Profile>((dataPoint) => Profile.fromJson(dataPoint))
+  //         .toList();
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {

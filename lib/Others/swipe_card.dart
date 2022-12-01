@@ -1,19 +1,25 @@
 import 'package:flutter/material.dart';
 
 class SwipeCard extends StatelessWidget {
-  final String id;
-  final String userName;
-  final int userAge;
-  final String userDescription;
-  final String profileImageSrc;
+  final String id_book;
+  final String author_book;
+  final String book_name;
+  final int year;
+  final String genre_book;
+  final int age_permission;
+  final String annotation_book;
+  final String book_image;
 
   const SwipeCard({
     Key? key,
-    required this.id,
-    required this.userName,
-    required this.userAge,
-    required this.userDescription,
-    required this.profileImageSrc,
+    required this.id_book,
+    required this.author_book,
+    required this.book_name,
+    required this.year,
+    required this.genre_book,
+    required this.age_permission,
+    required this.annotation_book,
+    required this.book_image,
   }) : super(key: key);
 
   @override
@@ -32,7 +38,7 @@ class SwipeCard extends StatelessWidget {
                 topRight: Radius.circular(46),
               ),
               image: DecorationImage(
-                  image: AssetImage(profileImageSrc), fit: BoxFit.fill),
+                  image: AssetImage(book_image), fit: BoxFit.fill),
             ),
           ),
         ),
@@ -54,7 +60,7 @@ class SwipeCard extends StatelessWidget {
               children: [
                 Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
                     child:Align(child: Text(
-                        "$userName",
+                        "$book_name",
                         overflow: TextOverflow.fade,
                         style: const TextStyle(
                             color: Colors.white,
@@ -65,7 +71,7 @@ class SwipeCard extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 15.0),
                   child: Align(child: Text(
-                    "$userAge+",
+                    "$age_permission+",
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 16,

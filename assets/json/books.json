@@ -1,51 +1,62 @@
 [
   {
-    "id": "1234",
-    "userName": "Война и мир",
-    "userAge": 12,
-    "userDescription": "No pain no gain!",
-    "profileImageSrc": "assets/bookspreview/WaP.jpg"
+    "id_book": "1",
+    "author_book": "Лев Толстой",
+    "book_name": "Война и мир",
+    "year": 1863,
+    "genre_book": "Романы",
+    "age_permission": 16,
+    "annotation_book": "Торт наполееон оч вкусный",
+    "book_image": "assets/bookspreview/WaP.jpg"
   },
   {
-    "id": "2345",
-    "userName": "Горе от ума",
-    "userAge": 12,
-    "userDescription": "I enjoy long walks to the fridge",
-    "profileImageSrc": "assets/bookspreview/GoU.jpg"
+    "id_book": "2",
+    "author_book": "Лев Толстой",
+    "book_name": "Война и мир",
+    "year": 1863,
+    "genre_book": "Романы",
+    "age_permission": 16,
+    "annotation_book": "Торт наполееон оч вкусный",
+    "book_image": "assets/bookspreview/WaP.jpg"
   },
   {
-    "id": "3456",
-    "userName": "Евгений Онегин",
-    "userAge": 12,
-    "userDescription": "Let's connect and chat!",
-    "profileImageSrc": "assets/bookspreview/EO.jpg"
+    "id_book": "3",
+    "author_book": "Лев Толстой",
+    "book_name": "Война и мир",
+    "year": 1863,
+    "genre_book": "Романы",
+    "age_permission": 16,
+    "annotation_book": "Торт наполееон оч вкусный",
+    "book_image": "assets/bookspreview/WaP.jpg"
   },
   {
-    "id": "4567",
-    "userName": "Борис Годунов",
-    "userAge": 12,
-    "userDescription": "Please be patient, not often on this app",
-    "profileImageSrc": "assets/bookspreview/BG.jpg"
+    "id_book": "4",
+    "author_book": "Лев Толстой",
+    "book_name": "Война и мир",
+    "year": 1863,
+    "genre_book": "Романы",
+    "age_permission": 16,
+    "annotation_book": "Торт наполееон оч вкусный",
+    "book_image": "assets/bookspreview/WaP.jpg"
   },
   {
-    "id": "5678",
-    "userName": "Герой нашего времени",
-    "userAge": 12,
-    "userDescription": "Just ask!",
-    "profileImageSrc": "assets/bookspreview/GNV.jpg"
+    "id_book": "5",
+    "author_book": "Лев Толстой",
+    "book_name": "Война и мир",
+    "year": 1863,
+    "genre_book": "Романы",
+    "age_permission": 16,
+    "annotation_book": "Торт наполееон оч вкусный",
+    "book_image": "assets/bookspreview/WaP.jpg"
   },
   {
-    "id": "6789",
-    "userName": "Конец",
-    "userAge": 29,
-    "userDescription": "Это была последняя предложенная нами книга",
-    "profileImageSrc": "assets/bookspreview/WaP.jpg"
-  },
-  {
-    "id": "6789",
-    "userName": "Конец",
-    "userAge": 29,
-    "userDescription": "Это была последняя предложенная нами книга",
-    "profileImageSrc": "assets/bookspreview/WaP.jpg"
+    "id_book": "6",
+    "author_book": "Лев Толстой",
+    "book_name": "Война и мир",
+    "year": 1863,
+    "genre_book": "Романы",
+    "age_permission": 16,
+    "annotation_book": "Торт наполееон оч вкусный",
+    "book_image": "assets/bookspreview/WaP.jpg"
   }
 ]

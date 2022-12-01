@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -55,15 +56,19 @@ class _SwipeInterfaceState extends State<SwipeInterface> {
   void evaluateSwipe(dx, dy) {
     if (dx > swipeThresholdx) {
       likeBook();
+      log("like");
     }
     if (dx < -swipeThresholdx) {
       doNotLikeBook();
+      log("dislike");
     }
     if (dy < -swipeThresholdy){
       WantReadBook();
+      log("wannaread");
     }
     if (dy > swipeThresholdy){
       SkipBook();
+      log("skip");
     }
   }
 

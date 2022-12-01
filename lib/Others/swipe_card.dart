@@ -62,7 +62,7 @@ class SwipeCard extends StatelessWidget {
                   padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
                   child: Align(
                     child: Text(
-                      "Путешествие с Чарли в поисках Америки",
+                      "$book_name",
                       overflow: TextOverflow.clip,
                       style: const TextStyle(
                         color: Colors.white,

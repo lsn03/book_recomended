@@ -53,7 +53,7 @@ class SwipeCard2 extends StatelessWidget {
                           child: Padding(
                             padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
                             child: Text(
-                              "Путешествие с Чарли в поисках Америки",
+                              "$book_name",
                               style: TextStyle(
                                 // backgroundColor: Colors.yellow,
                                 fontSize: 18,
@@ -65,7 +65,7 @@ class SwipeCard2 extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Padding(
+                       /* Padding(
                           padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
                           child: Icon(
                             Icons.send,
@@ -73,6 +73,7 @@ class SwipeCard2 extends StatelessWidget {
                             color: Color.fromRGBO(242, 241, 229, 1),
                           ),
                         ),
+                        */
                       ],
                     ),
                   ),

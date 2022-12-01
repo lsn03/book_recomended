@@ -42,13 +42,19 @@ class _SwipeInterfaceState extends State<SwipeInterface> {
   ];
 
   int stackCounter = 0;
-  int end = 10;
-  int likecount = 0;
-  int dislikecount = 0;
-  int wantcount = 0;
+  int end = 9;
+
+  int cntNrav = 0;
+  int cntNeNrav = 0;
+  int cntWannaRead = 0;
   int skipcount = 0;
+
   double swipeThresholdx = 100.0;
   double swipeThresholdy = 150.0;
+
+  int cnt_of_like_book = -1;
+  int cnt_of_dislike_book = -1;
+  int cnt_of_wishes_book = -1;
 
   loadJsonData() async {
     String apiurl = Mysql.loadBooks;
@@ -58,11 +64,12 @@ class _SwipeInterfaceState extends State<SwipeInterface> {
         Uri.parse(apiurl),
         body: {
           'email': prefs.getString("userEmail"),
-          'cnt': end.toString(),
+          'cnt': (end + 2).toString(),
         },
       );
-       
-      String jsonData = response.body;;
+
+      String jsonData = response.body;
+      ;
 
       setState(() {
         profiles = json
@@ -70,11 +77,56 @@ class _SwipeInterfaceState extends State<SwipeInterface> {
             .map<Profile>((dataPoint) => Profile.fromJson(dataPoint))
             .toList();
       });
+      FetchData();
     }
 
     //String jsonData = await rootBundle.loadString('assets/json/books.json');
   }
 
+  FetchData() async {
+    String apiurl = Mysql.fetchData;
+    final prefs = await SharedPreferences.getInstance();
+    var response = await http.post(
+      Uri.parse(apiurl),
+      body: {
+        'email': prefs.getString("userEmail"),
+        'fetchData': "true",
+      },
+    );
+    Map<String, dynamic> res = jsonDecode(response.body);
+
+    cnt_of_wishes_book = int.parse(res["cnt_of_wishes_book"]);
+    cnt_of_like_book = int.parse(res["cnt_of_like_book"]);
+    cnt_of_dislike_book = int.parse(res["cnt_of_dislike_book"]);
+
+    prefs.setInt("cnt_of_wishes_book", cnt_of_wishes_book);
+    prefs.setInt("cnt_of_like_book", cnt_of_like_book);
+    prefs.setInt("cnt_of_dislike_book", cnt_of_dislike_book);
+  }
+  UpdateData(int number) async{
+    String apiurl = Mysql.updateData;
+    final prefs = await SharedPreferences.getInstance();
+    cnt_of_wishes_book += number==3?1:0;
+    cnt_of_like_book += number==1?1:0;
+    cnt_of_dislike_book += number==2?1:0;
+    var response = await http.post(
+      Uri.parse(apiurl),
+      body: {
+        'email': prefs.getString("userEmail"),
+        'updateData': "true",
+        'cnt_of_wishes_book': "$cnt_of_wishes_book",
+        'cnt_of_like_book': "$cnt_of_like_book",
+        'cnt_of_dislike_book': "$cnt_of_dislike_book",
+      },
+    );
+    Map<String, dynamic> res = jsonDecode(response.body);
+
+    
+
+    prefs.setInt("cnt_of_wishes_book", cnt_of_wishes_book);
+    prefs.setInt("cnt_of_like_book", cnt_of_like_book);
+    prefs.setInt("cnt_of_dislike_book", cnt_of_dislike_book);
+  }
   _SwipeInterfaceState() {
     loadJsonData();
   }
@@ -104,9 +156,10 @@ class _SwipeInterfaceState extends State<SwipeInterface> {
       print("the end of list!");
     } else {
       increaseStackCounter();
-      likecount++;
+      cntNrav++;
+      UpdateData(1);
     }
-    print(likecount);
+    print(cntNrav);
     print("l");
   }
 
@@ -116,9 +169,10 @@ class _SwipeInterfaceState extends State<SwipeInterface> {
       print("the end of list!");
     } else {
       increaseStackCounter();
-      dislikecount++;
+      cntNeNrav++;
+      UpdateData(2);
     }
-    print(dislikecount);
+    print(cntNeNrav);
     print("d");
   }
 
@@ -127,9 +181,10 @@ class _SwipeInterfaceState extends State<SwipeInterface> {
       print("the end of list!");
     } else {
       increaseStackCounter();
-      wantcount++;
+      cntWannaRead++;
+      UpdateData(3);
     }
-    print(wantcount);
+    print(cntWannaRead);
     print("w");
   }
 

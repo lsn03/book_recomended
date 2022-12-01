@@ -40,7 +40,8 @@ class MyApp extends StatelessWidget {
       home: SplashScreen(),
       routes: {
         Pages.RegisterFormPage.toString(): (context) => RegisterFormPage(),
-        Pages.AuthorizationFormPage.toString(): (context) => AuthorizationFormPage(),
+        Pages.AuthorizationFormPage.toString(): (context) =>
+            AuthorizationFormPage(),
         Pages.CardPage.toString(): (context) => SwipeInterfaceApp(),
         Pages.CatalogPage.toString(): (context) => CatalogPage(),
         Pages.StatisticPage.toString(): (context) => StatisticPage(),
@@ -48,12 +49,18 @@ class MyApp extends StatelessWidget {
         Pages.ProfilePage.toString(): (context) => ProfilePage(),
         Pages.FooterPage.toString(): (context) => Footer(),
         Pages.SettingPage.toString(): (context) => SettingPage(),
-        Pages.IntoCatalogPopularPage.toString(): (context) => IntoCatalogPopularPage(),
-        Pages.IntoCatalogLiterPage.toString(): (context) => IntoCatalogLiterPage(),
-        Pages.IntoCatalogNotLiterPage.toString(): (context) => IntoCatalogNotLiterPage(),
-        Pages.IntoCatalogComicsPage.toString(): (context) => IntoCatalogComicsPage(),
-        Pages.IntoCatalogAllBooksPage.toString(): (context) => IntoCatalogAllBooksPage(),
-        Pages.OtherPeopleProfilePage.toString(): (context) => OtherPeopleProfilePage(),
+        Pages.IntoCatalogPopularPage.toString(): (context) =>
+            IntoCatalogPopularPage(),
+        Pages.IntoCatalogLiterPage.toString(): (context) =>
+            IntoCatalogLiterPage(),
+        Pages.IntoCatalogNotLiterPage.toString(): (context) =>
+            IntoCatalogNotLiterPage(),
+        Pages.IntoCatalogComicsPage.toString(): (context) =>
+            IntoCatalogComicsPage(),
+        Pages.IntoCatalogAllBooksPage.toString(): (context) =>
+            IntoCatalogAllBooksPage(),
+        Pages.OtherPeopleProfilePage.toString(): (context) =>
+            OtherPeopleProfilePage(),
       },
     );
   }

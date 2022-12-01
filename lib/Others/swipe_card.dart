@@ -4,9 +4,9 @@ class SwipeCard extends StatelessWidget {
   final String id_book;
   final String author_book;
   final String book_name;
-  final int year;
+  final String year;
   final String genre_book;
-  final int age_permission;
+  final String age_permission;
   final String annotation_book;
   final String book_image;
 
@@ -38,8 +38,7 @@ class SwipeCard extends StatelessWidget {
                 topRight: Radius.circular(46),
               ),
               image: DecorationImage(
-                  image: AssetImage(book_image),
-                  fit: BoxFit.fill),
+                  image: NetworkImage(book_image), fit: BoxFit.fill),
             ),
           ),
         ),
@@ -63,7 +62,7 @@ class SwipeCard extends StatelessWidget {
                   padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
                   child: Align(
                     child: Text(
-                      "Путешествие с Чарли в поисках Америки",
+                      "$book_name",
                       overflow: TextOverflow.clip,
                       style: const TextStyle(
                         color: Colors.white,

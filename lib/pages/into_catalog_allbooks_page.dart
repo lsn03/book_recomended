@@ -149,7 +149,7 @@ Widget buildBody() {
                           decoration: BoxDecoration(
                               image: DecorationImage(
                                 image:
-                                    AssetImage("assets/bookspreview/WaP.jpg"),
+                                AssetImage("figma/ComicsAndManga/BlackTorch.jpg"),
                                 fit: BoxFit.fill,
                               ),
                               borderRadius:
@@ -174,7 +174,7 @@ Widget buildBody() {
                           ),
                           child: Align(
                             child: Text(
-                              "Война и мир",
+                              "Чёрный факел",
                               style: TextStyle(
                                   color: Color.fromRGBO(242, 241, 229, 1),
                                 fontFamily: "OpenSans",),
@@ -209,7 +209,7 @@ Widget buildBody() {
                           decoration: BoxDecoration(
                               image: DecorationImage(
                                 image:
-                                    AssetImage("assets/bookspreview/WaP.jpg"),
+                                AssetImage("figma/ComicsAndManga/SecretLove.jpg"),
                                 fit: BoxFit.fill,
                               ),
                               borderRadius:
@@ -234,7 +234,7 @@ Widget buildBody() {
                           ),
                           child: Align(
                             child: Text(
-                              "Война и мир",
+                              "Тайная любовь",
                               style: TextStyle(
                                   color: Color.fromRGBO(242, 241, 229, 1),
                                 fontFamily: "OpenSans",),
@@ -261,7 +261,7 @@ Widget buildBody() {
                           decoration: BoxDecoration(
                               image: DecorationImage(
                                 image:
-                                    AssetImage("assets/bookspreview/WaP.jpg"),
+                                AssetImage("figma/ComicsAndManga/KillerClass.jpg"),
                                 fit: BoxFit.fill,
                               ),
                               borderRadius:
@@ -286,7 +286,7 @@ Widget buildBody() {
                           ),
                           child: Align(
                             child: Text(
-                              "Война и мир",
+                              "Класс убийц",
                               style: TextStyle(
                                   color: Color.fromRGBO(242, 241, 229, 1),
                                 fontFamily: "OpenSans",),
@@ -321,7 +321,7 @@ Widget buildBody() {
                           decoration: BoxDecoration(
                               image: DecorationImage(
                                 image:
-                                    AssetImage("assets/bookspreview/WaP.jpg"),
+                                AssetImage("figma/ComicsAndManga/Bleach.jpg"),
                                 fit: BoxFit.fill,
                               ),
                               borderRadius:
@@ -346,7 +346,7 @@ Widget buildBody() {
                           ),
                           child: Align(
                             child: Text(
-                              "Война и мир",
+                              "Блич",
                               style: TextStyle(
                                   color: Color.fromRGBO(242, 241, 229, 1),
                                 fontFamily: "OpenSans",),
@@ -373,7 +373,7 @@ Widget buildBody() {
                           decoration: BoxDecoration(
                               image: DecorationImage(
                                 image:
-                                    AssetImage("assets/bookspreview/WaP.jpg"),
+                                AssetImage("figma/ComicsAndManga/PustoCvet.jpg"),
                                 fit: BoxFit.fill,
                               ),
                               borderRadius:
@@ -398,7 +398,7 @@ Widget buildBody() {
                           ),
                           child: Align(
                             child: Text(
-                              "Война и мир",
+                              "Пустоцвет",
                               style: TextStyle(
                                   color: Color.fromRGBO(242, 241, 229, 1),
                                 fontFamily: "OpenSans",),

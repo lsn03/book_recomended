@@ -7,6 +7,7 @@ import 'package:book_recomended/Others/book.dart';
 import 'package:flutter/src/widgets/basic.dart';
 import 'dart:core';
 import 'package:flutter/src/painting/box_shadow.dart';
+import 'package:book_recomended/pages/pages.dart';
 
 class PeoplePage extends StatefulWidget {
   const PeoplePage({super.key});
@@ -52,9 +53,9 @@ class _PeoplefacePage extends State<PeoplePage> {
         height: 700,
         decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/image/BackMain.jpg"),
-              fit: BoxFit.fill,
-            )),
+          image: AssetImage("assets/image/BackMain.jpg"),
+          fit: BoxFit.fill,
+        )),
         child: SingleChildScrollView(
           child: Align(
             child: Column(
@@ -72,7 +73,9 @@ class _PeoplefacePage extends State<PeoplePage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Container(
+                      InkWell(onTap: ((){
+                        Navigator.pushNamed(context, Pages.OtherPeopleProfilePage);
+                      }),child: Container(
                         height: 140,
                         width: 105,
                         decoration: BoxDecoration(
@@ -86,12 +89,12 @@ class _PeoplefacePage extends State<PeoplePage> {
                               width: 105,
                               decoration: BoxDecoration(
                                   image: DecorationImage(
-                                    image:
-                                    AssetImage("assets/image/OrangeBoy.png"),
+                                    image: AssetImage(
+                                        "assets/image/OrangeBoy.png"),
                                     fit: BoxFit.fill,
                                   ),
                                   borderRadius:
-                                  BorderRadius.all(Radius.circular(5))),
+                                      BorderRadius.all(Radius.circular(5))),
                             ),
                             Container(
                               height: 35,
@@ -112,62 +115,11 @@ class _PeoplefacePage extends State<PeoplePage> {
                               ),
                               child: Align(
                                 child: Text(
-                                  "Война и мир",
+                                  "Джереми",
                                   style: TextStyle(
-                                      color: Color.fromRGBO(
-                                          242, 241, 229, 1)),
-                                  overflow: TextOverflow.clip,
-                                ),
-                              ),
-                              alignment: Alignment.center,
-                            ),
-                          ],
-                        ),
-                      ),
-                      InkWell(child: Container(
-                        height: 140,
-                        width: 105,
-                        decoration: BoxDecoration(
-                          color: Color.fromRGBO(70, 155, 150, 1),
-                          borderRadius: BorderRadius.all(Radius.circular(5)),
-                        ),
-                        child: ListView(
-                          children: [
-                            Container(
-                              height: 105,
-                              width: 105,
-                              decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image:
-                                    AssetImage("assets/image/BlackBoy.png"),
-                                    fit: BoxFit.fill,
+                                    color: Color.fromRGBO(0, 0, 0, 1),
+                                    fontFamily: "OpenSans",
                                   ),
-                                  borderRadius:
-                                  BorderRadius.all(Radius.circular(5))),
-                            ),
-                            Container(
-                              height: 35,
-                              width: 105,
-                              decoration: BoxDecoration(
-                                color: Color.fromRGBO(70, 155, 150, 1),
-                                borderRadius: BorderRadius.only(
-                                  bottomLeft: Radius.circular(5),
-                                  bottomRight: Radius.circular(5),
-                                ),
-                                boxShadow: <BoxShadow>[
-                                  BoxShadow(
-                                    color: Color.fromRGBO(0, 0, 0, 0.3),
-                                    blurRadius: 1.0,
-                                    offset: Offset(0, 3),
-                                  )
-                                ],
-                              ),
-                              child: Align(
-                                child: Text(
-                                  "Война и мир",
-                                  style: TextStyle(
-                                      color: Color.fromRGBO(
-                                          242, 241, 229, 1)),
                                   overflow: TextOverflow.clip,
                                 ),
                               ),
@@ -176,116 +128,59 @@ class _PeoplefacePage extends State<PeoplePage> {
                           ],
                         ),
                       ),),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(0, 30, 0, 30),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Container(
-                        height: 140,
-                        width: 105,
-                        decoration: BoxDecoration(
-                          color: Color.fromRGBO(70, 155, 150, 1),
-                          borderRadius: BorderRadius.all(Radius.circular(5)),
-                        ),
-                        child: ListView(
-                          children: [
-                            Container(
-                              height: 105,
-                              width: 105,
-                              decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image:
-                                    AssetImage("assets/image/OrangeGirl.png"),
-                                    fit: BoxFit.fill,
+                      InkWell(
+                        child: Container(
+                          height: 140,
+                          width: 105,
+                          decoration: BoxDecoration(
+                            color: Color.fromRGBO(70, 155, 150, 1),
+                            borderRadius: BorderRadius.all(Radius.circular(5)),
+                          ),
+                          child: ListView(
+                            children: [
+                              Container(
+                                height: 105,
+                                width: 105,
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      image: AssetImage(
+                                          "assets/image/BlackBoy.png"),
+                                      fit: BoxFit.fill,
+                                    ),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5))),
+                              ),
+                              Container(
+                                height: 35,
+                                width: 105,
+                                decoration: BoxDecoration(
+                                  color: Color.fromRGBO(70, 155, 150, 1),
+                                  borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(5),
+                                    bottomRight: Radius.circular(5),
                                   ),
-                                  borderRadius:
-                                  BorderRadius.all(Radius.circular(5))),
-                            ),
-                            Container(
-                              height: 35,
-                              width: 105,
-                              decoration: BoxDecoration(
-                                color: Color.fromRGBO(70, 155, 150, 1),
-                                borderRadius: BorderRadius.only(
-                                  bottomLeft: Radius.circular(5),
-                                  bottomRight: Radius.circular(5),
+                                  boxShadow: <BoxShadow>[
+                                    BoxShadow(
+                                      color: Color.fromRGBO(0, 0, 0, 0.3),
+                                      blurRadius: 1.0,
+                                      offset: Offset(0, 3),
+                                    )
+                                  ],
                                 ),
-                                boxShadow: <BoxShadow>[
-                                  BoxShadow(
-                                    color: Color.fromRGBO(0, 0, 0, 0.3),
-                                    blurRadius: 1.0,
-                                    offset: Offset(0, 3),
-                                  )
-                                ],
-                              ),
-                              child: Align(
-                                child: Text(
-                                  "Война и мир",
-                                  style: TextStyle(
-                                      color: Color.fromRGBO(
-                                          242, 241, 229, 1)),
-                                  overflow: TextOverflow.clip,
-                                ),
-                              ),
-                              alignment: Alignment.center,
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        height: 140,
-                        width: 105,
-                        decoration: BoxDecoration(
-                          color: Color.fromRGBO(70, 155, 150, 1),
-                          borderRadius: BorderRadius.all(Radius.circular(5)),
-                        ),
-                        child: ListView(
-                          children: [
-                            Container(
-                              height: 105,
-                              width: 105,
-                              decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image:
-                                    AssetImage("assets/image/WhiteGirl.png"),
-                                    fit: BoxFit.fill,
+                                child: Align(
+                                  child: Text(
+                                    "Людовик",
+                                    style: TextStyle(
+                                      color: Color.fromRGBO(0, 0, 0, 1),
+                                      fontFamily: "OpenSans",
+                                    ),
+                                    overflow: TextOverflow.clip,
                                   ),
-                                  borderRadius:
-                                  BorderRadius.all(Radius.circular(5))),
-                            ),
-                            Container(
-                              height: 35,
-                              width: 105,
-                              decoration: BoxDecoration(
-                                color: Color.fromRGBO(70, 155, 150, 1),
-                                borderRadius: BorderRadius.only(
-                                  bottomLeft: Radius.circular(5),
-                                  bottomRight: Radius.circular(5),
                                 ),
-                                boxShadow: <BoxShadow>[
-                                  BoxShadow(
-                                    color: Color.fromRGBO(0, 0, 0, 0.3),
-                                    blurRadius: 1.0,
-                                    offset: Offset(0, 3),
-                                  )
-                                ],
+                                alignment: Alignment.center,
                               ),
-                              child: Align(
-                                child: Text(
-                                  "Война и мир",
-                                  style: TextStyle(
-                                      color: Color.fromRGBO(
-                                          242, 241, 229, 1)),
-                                  overflow: TextOverflow.clip,
-                                ),
-                              ),
-                              alignment: Alignment.center,
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ],
@@ -310,12 +205,12 @@ class _PeoplefacePage extends State<PeoplePage> {
                               width: 105,
                               decoration: BoxDecoration(
                                   image: DecorationImage(
-                                    image:
-                                    AssetImage("assets/image/OrangeBoy.png"),
+                                    image: AssetImage(
+                                        "assets/image/OrangeGirl.png"),
                                     fit: BoxFit.fill,
                                   ),
                                   borderRadius:
-                                  BorderRadius.all(Radius.circular(5))),
+                                      BorderRadius.all(Radius.circular(5))),
                             ),
                             Container(
                               height: 35,
@@ -336,10 +231,11 @@ class _PeoplefacePage extends State<PeoplePage> {
                               ),
                               child: Align(
                                 child: Text(
-                                  "Война и мир",
+                                  "Екатерина",
                                   style: TextStyle(
-                                      color: Color.fromRGBO(
-                                          242, 241, 229, 1)),
+                                    color: Color.fromRGBO(0, 0, 0, 1),
+                                    fontFamily: "OpenSans",
+                                  ),
                                   overflow: TextOverflow.clip,
                                 ),
                               ),
@@ -348,7 +244,7 @@ class _PeoplefacePage extends State<PeoplePage> {
                           ],
                         ),
                       ),
-                      InkWell(child:Container(
+                      Container(
                         height: 140,
                         width: 105,
                         decoration: BoxDecoration(
@@ -362,12 +258,12 @@ class _PeoplefacePage extends State<PeoplePage> {
                               width: 105,
                               decoration: BoxDecoration(
                                   image: DecorationImage(
-                                    image:
-                                    AssetImage("assets/image/OrangeGirl.png"),
+                                    image: AssetImage(
+                                        "assets/image/WhiteGirl.png"),
                                     fit: BoxFit.fill,
                                   ),
                                   borderRadius:
-                                  BorderRadius.all(Radius.circular(5))),
+                                      BorderRadius.all(Radius.circular(5))),
                             ),
                             Container(
                               height: 35,
@@ -388,10 +284,11 @@ class _PeoplefacePage extends State<PeoplePage> {
                               ),
                               child: Align(
                                 child: Text(
-                                  "Война и мир",
+                                  "Марина",
                                   style: TextStyle(
-                                      color: Color.fromRGBO(
-                                          242, 241, 229, 1)),
+                                    color: Color.fromRGBO(0, 0, 0, 1),
+                                    fontFamily: "OpenSans",
+                                  ),
                                   overflow: TextOverflow.clip,
                                 ),
                               ),
@@ -400,16 +297,129 @@ class _PeoplefacePage extends State<PeoplePage> {
                           ],
                         ),
                       ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0, 30, 0, 30),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        height: 140,
+                        width: 105,
+                        decoration: BoxDecoration(
+                          color: Color.fromRGBO(70, 155, 150, 1),
+                          borderRadius: BorderRadius.all(Radius.circular(5)),
+                        ),
+                        child: ListView(
+                          children: [
+                            Container(
+                              height: 105,
+                              width: 105,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                        "assets/image/BlackBoy.png"),
+                                    fit: BoxFit.fill,
+                                  ),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(5))),
+                            ),
+                            Container(
+                              height: 35,
+                              width: 105,
+                              decoration: BoxDecoration(
+                                color: Color.fromRGBO(70, 155, 150, 1),
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(5),
+                                  bottomRight: Radius.circular(5),
+                                ),
+                                boxShadow: <BoxShadow>[
+                                  BoxShadow(
+                                    color: Color.fromRGBO(0, 0, 0, 0.3),
+                                    blurRadius: 1.0,
+                                    offset: Offset(0, 3),
+                                  )
+                                ],
+                              ),
+                              child: Align(
+                                child: Text(
+                                  "Антонио",
+                                  style: TextStyle(
+                                    color: Color.fromRGBO(0, 0, 0, 1),
+                                    fontFamily: "OpenSans",
+                                  ),
+                                  overflow: TextOverflow.clip,
+                                ),
+                              ),
+                              alignment: Alignment.center,
+                            ),
+                          ],
+                        ),
+                      ),
+                      InkWell(
+                        child: Container(
+                          height: 140,
+                          width: 105,
+                          decoration: BoxDecoration(
+                            color: Color.fromRGBO(70, 155, 150, 1),
+                            borderRadius: BorderRadius.all(Radius.circular(5)),
+                          ),
+                          child: ListView(
+                            children: [
+                              Container(
+                                height: 105,
+                                width: 105,
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      image: AssetImage(
+                                          "assets/image/OrangeGirl.png"),
+                                      fit: BoxFit.fill,
+                                    ),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5))),
+                              ),
+                              Container(
+                                height: 35,
+                                width: 105,
+                                decoration: BoxDecoration(
+                                  color: Color.fromRGBO(70, 155, 150, 1),
+                                  borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(5),
+                                    bottomRight: Radius.circular(5),
+                                  ),
+                                  boxShadow: <BoxShadow>[
+                                    BoxShadow(
+                                      color: Color.fromRGBO(0, 0, 0, 0.3),
+                                      blurRadius: 1.0,
+                                      offset: Offset(0, 3),
+                                    )
+                                  ],
+                                ),
+                                child: Align(
+                                  child: Text(
+                                    "Александра",
+                                    style: TextStyle(
+                                      color: Color.fromRGBO(0, 0, 0, 1),
+                                      fontFamily: "OpenSans",
+                                    ),
+                                    overflow: TextOverflow.clip,
+                                  ),
+                                ),
+                                alignment: Alignment.center,
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
                     ],
                   ),
                 ),
               ],
             ),
-          )
-          ,
-        )
-        ,
+          ),
+        ),
       ),
       // floatingActionButton:,
     );

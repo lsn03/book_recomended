@@ -1,3 +1,5 @@
+// import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 class SwipeCard2 extends StatelessWidget {
@@ -40,28 +42,39 @@ class SwipeCard2 extends StatelessWidget {
             child: Column(
               children: [
                 Padding(
-                  padding: EdgeInsets.fromLTRB(30, 40, 0, 0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "$book_name",
-                        style: TextStyle(
-                          fontSize: 24,
-                          color: Color.fromRGBO(242, 241, 229, 1),
-                          fontFamily: "OpenSans",
-                          overflow: TextOverflow.clip,
+                  padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
+                  child: Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          // color: Colors.yellow,
+                          // height: 100,
+                          child: Padding(
+                            padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                            child: Text(
+                              "Путешествие с Чарли в поисках Америки",
+                              style: TextStyle(
+                                // backgroundColor: Colors.yellow,
+                                fontSize: 18,
+                                color: Color.fromRGBO(242, 241, 229, 1),
+                                fontFamily: "OpenSans",
+                                overflow: TextOverflow.clip,
+                              ),
+                              softWrap: true,
+                            ),
+                          ),
                         ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                        child: Icon(
-                          Icons.send,
-                          size: 30,
-                          color: Color.fromRGBO(242, 241, 229, 1),
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                          child: Icon(
+                            Icons.send,
+                            size: 20,
+                            color: Color.fromRGBO(242, 241, 229, 1),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
                 Padding(
@@ -101,11 +114,12 @@ class SwipeCard2 extends StatelessWidget {
                             child: Container(
                               height: 150,
                               child: Text(
-                              "$annotation_book",
-                              style: TextStyle(fontSize: 13),
-                              overflow: TextOverflow.clip,
+                                "$annotation_book",
+                                style: TextStyle(fontSize: 13),
+                                overflow: TextOverflow.clip,
+                              ),
                             ),
-                          ),),
+                          ),
                           alignment: Alignment.center,
                         ),
                       ),

@@ -269,7 +269,7 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
                   ),
                   child: TextFormField(
                     style: TextStyle(color: Color.fromRGBO(58, 106, 103, 1)),
-                    controller: _passController,
+                    controller: _confirmPassController,
                     obscureText: _hidePass,
                     decoration: InputDecoration(
                       isDense: true,

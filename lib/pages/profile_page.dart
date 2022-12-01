@@ -87,7 +87,7 @@ class _ProfileState extends State<Profile> {
               );
       print(response.body);
       Map<String, dynamic> res = jsonDecode( response.body);
-      userName = res["first_name"]+" "+res["second_name"];
+      userName = res["first_name"];
       cntNrav =int.parse(res["cnt_of_like_book"]);
       cntNeNrav = int.parse(res["cnt_of_dislike_book"]);
       cntWannaRead = int.parse(res["cnt_of_wishes_book"]);
@@ -95,15 +95,17 @@ class _ProfileState extends State<Profile> {
       prefs.setInt("cntNeNrav", cntNeNrav);
       prefs.setInt("cntWannaRead", cntWannaRead);
       prefs.setString("userName", userName);
+      /*
       print(userName);
       print(cntNrav);
       print(cntNeNrav);
       print(cntWannaRead);
+      */
       //print(response.body);
 
       setState(() {
         log("setstate");
-        userName = res["first_name"]+" "+res["second_name"];
+        userName = res["first_name"];
         cntNrav =int.parse(res["cnt_of_like_book"]);
         cntNeNrav = int.parse(res["cnt_of_dislike_book"]);
         cntWannaRead = int.parse(res["cnt_of_wishes_book"]);

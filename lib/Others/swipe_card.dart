@@ -63,7 +63,7 @@ class SwipeCard extends StatelessWidget {
                   child: Align(
                     child: Text(
                       "$book_name",
-                      overflow: TextOverflow.fade,
+                      overflow: TextOverflow.clip,
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 24,

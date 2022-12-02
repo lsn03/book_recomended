@@ -69,7 +69,7 @@ class _SwipeInterfaceState extends State<SwipeInterface> {
       );
 
       String jsonData = response.body;
-      ;
+      
 
       setState(() {
         profiles = json

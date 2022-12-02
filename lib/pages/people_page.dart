@@ -74,7 +74,7 @@ class _PeoplefacePage extends State<PeoplePage> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       InkWell(onTap: ((){
-                        Navigator.pushNamed(context, Pages.OtherPeopleProfilePage);
+                        //Navigator.pushNamed(context, Pages.OtherPeopleProfilePage);
                       }),child: Container(
                         height: 140,
                         width: 105,

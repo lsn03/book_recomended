@@ -1,7 +1,7 @@
 import 'package:mysql1/mysql1.dart';
 
 class Mysql {
-  static const _ipAdress = "192.168.68.11";
+  static const _ipAdress = "192.168.0.109";
   static const hostConnect = "http://$_ipAdress/love&read";
   static const signUp = "$hostConnect/signup.php";
   static const login = "$hostConnect/login.php";

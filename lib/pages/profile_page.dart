@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:book_recomended/Others/CustomIcons.dart';
 import 'package:book_recomended/backend/mysql.dart';
 import 'package:http/http.dart' as http;
 import 'package:book_recomended/pages/footer.dart';
@@ -25,15 +26,32 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          IconButton(
+          Align(
+            child: IconButton(
               onPressed: (() {
-                Navigator.pushNamed(context, Pages.SettingPage);
+                LogOut(context);
               }),
               icon: Icon(
-                Icons.settings,
-                color: Colors.black,
-              )),
+                Icons.exit_to_app_outlined,
+                color: Color.fromRGBO(195, 175, 152, 1),
+                size: 40,
+              ),
+            ),
+            alignment: Alignment.centerRight,
+          ),
+          // IconButton(
+          //   alignment: Alignment.centerRight,
+          //   onPressed: (() {
+          //     Navigator.pushNamed(context, Pages.SettingPage);
+          //   }),
+          //   icon: Icon(
+          //     Icons.settings,
+          //     color: Color.fromRGBO(195, 175, 152, 1),
+          //     size: 40,
+          //   ),
+          // ),
         ],
+        backgroundColor: Color.fromRGBO(70, 155, 152, 1),
         automaticallyImplyLeading: false,
         //toolbarHeight: 0,
       ),
@@ -42,11 +60,18 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 }
 
-int cntNrav = -1;
-int cntNeNrav=-1;
-int cntWannaRead=-1;
+int cntNrav = 100;
+int cntNeNrav = -1;
+int cntWannaRead = -1;
 String userName = "";
 bool init = false;
+LogOut (BuildContext context) async{
+  final prefs = await SharedPreferences.getInstance();
+  prefs.clear();
+  init = false;
+  Navigator.pushReplacementNamed(context, Pages.AuthorizationFormPage);
+}
+
 FetchDataAppbar() async {
   final prefs = await SharedPreferences.getInstance();
   //print("FetchData");
@@ -72,28 +97,29 @@ class _ProfileState extends State<Profile> {
   FetchData() async {
     final prefs = await SharedPreferences.getInstance();
     //print("FetchData" +"\r");
-    if (prefs.containsKey("userEmail") && !init){//&& userEmail==null &&cntNrav==null) {
+    if (prefs.containsKey("userEmail") && !init) {
+      //&& userEmail==null &&cntNrav==null) {
       init = true;
-      
+
       userEmail = prefs.getString("userEmail");
       //print(userEmail);
 
       String apiurl = Mysql.profile;
       //print(apiurl);
       // "http://192.168.241.11/love&read/profile.php";
-      var response = await http
-          .post(Uri.parse(apiurl), body: {'email': userEmail}
+      var response =
+          await http.post(Uri.parse(apiurl), body: {'email': userEmail}
               //headers: {'Accept': 'application/json'},
               );
       print(response.body);
-      Map<String, dynamic> res = jsonDecode( response.body);
+      Map<String, dynamic> res = jsonDecode(response.body);
       userName = res["first_name"];
-      cntNrav =int.parse(res["cnt_of_like_book"]);
+      cntNrav = int.parse(res["cnt_of_like_book"]);
       cntNeNrav = int.parse(res["cnt_of_dislike_book"]);
       cntWannaRead = int.parse(res["cnt_of_wishes_book"]);
-      prefs.setInt("cntNrav", cntNrav);
-      prefs.setInt("cntNeNrav", cntNeNrav);
-      prefs.setInt("cntWannaRead", cntWannaRead);
+      prefs.setInt("cnt_of_like_book", cntNrav);
+      prefs.setInt("cnt_of_dislike_book", cntNeNrav);
+      prefs.setInt("cnt_of_wishes_book", cntWannaRead);
       prefs.setString("userName", userName);
       /*
       print(userName);
@@ -106,7 +132,7 @@ class _ProfileState extends State<Profile> {
       setState(() {
         log("setstate");
         userName = res["first_name"];
-        cntNrav =int.parse(res["cnt_of_like_book"]);
+        cntNrav = int.parse(res["cnt_of_like_book"]);
         cntNeNrav = int.parse(res["cnt_of_dislike_book"]);
         cntWannaRead = int.parse(res["cnt_of_wishes_book"]);
       });
@@ -114,143 +140,296 @@ class _ProfileState extends State<Profile> {
       if (response.body.toString() == "{\"login\":true}") {
         //Navigator.pushNamed(context, Pages.FooterPage);
       } else {}
-    }else{
-
-      if(userName==""){
+    } else {
+      if (userName == "") {
         log("Exception nahui");
-      }
-      else
+      } else{
         log("пользователь уже занесен");
+        if (prefs.getInt("cnt_of_like_book")!=cntNrav || cntNeNrav !=prefs.getInt("cnt_of_dislike_book") || cntWannaRead != prefs.getInt("cnt_of_wishes_book")){
+          setState(() {
+
+             cntNrav = prefs.getInt("cnt_of_like_book")!;
+            cntNeNrav =prefs.getInt("cnt_of_dislike_book")!;
+            cntWannaRead = prefs.getInt("cnt_of_wishes_book")!;
+          });
+         
+        }
+      }
+        
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Container(
       //mainAxisAlignment: MainAxisAlignment.center,
       //crossAxisAlignment: CrossAxisAlignment.center,
-
-      children: [
-        Padding(
-          padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // backgroundColor: Color(0xFFD1FFD2),
-              Container(
-                decoration: BoxDecoration(
-                  color: Color(0xFFD1FFD2),
-                ),
-                width: 390,
-                height: 180,
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      CircleAvatar(
-                        radius: 60,
-                      ),
-                      Text(
-                        "$userName",
-                        style: TextStyle(
-                          fontSize: fs + 4,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("assets/image/BackMain.jpg"),
+          fit: BoxFit.fill,
+        ),
+      ),
+      child: Column(
+        children: [
+          Align(
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(0, 30, 0, 50),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 160,
+                    width: 125,
+                    decoration: BoxDecoration(
+                        color: Color.fromRGBO(70, 155, 150, 1),
+                        borderRadius: BorderRadius.all(Radius.circular(5))),
+                    child: ListView(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(5, 5, 5, 0),
+                          child: Container(
+                            height: 130,
+                            width: 125,
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                              image: AssetImage("assets/image/WhiteGirl.png"),
+                              fit: BoxFit.fill,
+                            )),
+                          ),
                         ),
-                      ),
-                    ],
+                        Container(
+                          height: 25,
+                          width: 125,
+                          child: Align(
+                            child: Text(
+                              "$userName",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontFamily: "OpenSans",
+                                  color: Color.fromRGBO(242, 241, 229, 1)),
+                            ),
+                            alignment: Alignment.topCenter,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            alignment: Alignment.topCenter,
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: EdgeInsets.fromLTRB(33, 0, 13.5, 0),
+                  child: Container(
+                    height: 100,
+                    width: 90,
+                    decoration: BoxDecoration(
+                        color: Color.fromRGBO(70, 155, 150, 1),
+                        borderRadius: BorderRadius.all(Radius.circular(5))),
+                    child: ListView(
+                      children: [
+                        Container(
+                          height: 80,
+                          width: 90,
+                          decoration: BoxDecoration(
+                              color: Color.fromRGBO(195, 175, 152, 1),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5))),
+                          child: Padding(
+                            padding: EdgeInsets.fromLTRB(0, 0, 9, 0),
+                            child: Stack(
+                              alignment: Alignment.center,
+                              children: <Widget>[
+                                Icon(
+                                  CustomIcons.heart,
+                                  color: Color.fromRGBO(70, 155, 152, 1),
+                                  size: 30,
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.fromLTRB(9, 0, 0, 0),
+                                  child: Text(
+                                    "$cntNrav",
+                                    style: TextStyle(
+                                        color:
+                                            Color.fromRGBO(242, 241, 229, 1)),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: 20,
+                          width: 90,
+                          decoration: BoxDecoration(
+                              color: Color.fromRGBO(70, 155, 150, 1),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5))),
+                          child: Align(
+                            child: Text(
+                              "Нравится",
+                              style: TextStyle(
+                                  fontSize: 12, fontFamily: "OpenSans"),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.all(16),
-          child: Row(
-              //mainAxisAlignment: MainAxisAlignment.start,
-
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Нравится: ",
-                      style: TextStyle(
-                        fontSize: fs,
-                      ),
-                    ),
-                    Text(
-                      "Не нравится: ",
-                      style: TextStyle(
-                        fontSize: fs,
-                      ),
-                    ),
-                    Text(
-                      "Хочет прочитать: ",
-                      style: TextStyle(
-                        fontSize: fs,
-                      ),
-                    ),
-                    
-                  ],
-                ),
-                SizedBox(
-                  width: 35,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text(
-                      "$cntNrav книг ",
-                      style: TextStyle(
-                        fontSize: fs,
-                      ),
-                    ),
-                    Text(
-                      "$cntNeNrav книг",
-                      style: TextStyle(
-                        fontSize: fs,
-                      ),
-                    ),
-                    Text(
-                      "$cntWannaRead книг",
-                      style: TextStyle(
-                        fontSize: fs,
-                      ),
-                    ),
-                    
-                  ],
-                ),
-              ]),
-        ),
-        Column(
-          //mainAxisAlignment: MainAxisAlignment.start,
-
-          children: [
-            Padding(
-              padding: EdgeInsets.all(16),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Предпочитаемые жанры:",
-                      style: TextStyle(
-                          fontSize: fs + 2, fontStyle: FontStyle.italic),
-                    ),
-                    Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Фентези, приключения,современная проза, пьесы, научная фантастика, комедия, драма",
-                            style: TextStyle(
-                              fontSize: fs,
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0, 0, 13.5, 0),
+                  child: Container(
+                    height: 100,
+                    width: 90,
+                    decoration: BoxDecoration(
+                        color: Color.fromRGBO(70, 155, 150, 1),
+                        borderRadius: BorderRadius.all(Radius.circular(5))),
+                    child: ListView(
+                      children: [
+                        Container(
+                          height: 80,
+                          width: 90,
+                          decoration: BoxDecoration(
+                              color: Color.fromRGBO(195, 175, 152, 1),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5))),
+                          child: Padding(
+                            padding: EdgeInsets.fromLTRB(0, 0, 9, 0),
+                            child: Stack(
+                              alignment: Alignment.center,
+                              children: <Widget>[
+                                Icon(
+                                  CustomIcons.broken_heart,
+                                  color: Color.fromRGBO(70, 155, 152, 1),
+                                  size: 30,
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.fromLTRB(9, 0, 0, 0),
+                                  child: Text(
+                                    "$cntNeNrav",
+                                    style: TextStyle(
+                                        color:
+                                            Color.fromRGBO(242, 241, 229, 1)),
+                                  ),
+                                ),
+                              ],
                             ),
-                          )
-                        ]),
-                  ]),
+                          ),
+                        ),
+                        Container(
+                          height: 20,
+                          width: 90,
+                          decoration: BoxDecoration(
+                              color: Color.fromRGBO(70, 155, 150, 1),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5))),
+                          child: Align(
+                            child: Text(
+                              "Не нравится",
+                              style: TextStyle(
+                                  fontSize: 12, fontFamily: "OpenSans"),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0, 0, 33, 0),
+                  child: Container(
+                    height: 100,
+                    width: 90,
+                    decoration: BoxDecoration(
+                        color: Color.fromRGBO(70, 155, 150, 1),
+                        borderRadius: BorderRadius.all(Radius.circular(5))),
+                    child: ListView(
+                      children: [
+                        Container(
+                          height: 80,
+                          width: 90,
+                          decoration: BoxDecoration(
+                              color: Color.fromRGBO(195, 175, 152, 1),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5))),
+                          child: Padding(
+                            padding: EdgeInsets.fromLTRB(0, 0, 9, 0),
+                            child: Stack(
+                              alignment: Alignment.center,
+                              children: <Widget>[
+                                Icon(
+                                  CustomIcons.open_book,
+                                  color: Color.fromRGBO(70, 155, 152, 1),
+                                  size: 30,
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.fromLTRB(9, 0, 0, 0),
+                                  child: Text(
+                                    "$cntWannaRead",
+                                    style: TextStyle(
+                                        color:
+                                            Color.fromRGBO(242, 241, 229, 1)),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: 20,
+                          width: 90,
+                          decoration: BoxDecoration(
+                              color: Color.fromRGBO(70, 155, 150, 1),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5))),
+                          child: Align(
+                            child: Text(
+                              "В планах",
+                              style: TextStyle(
+                                  fontSize: 12, fontFamily: "OpenSans"),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
-      ],
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
+            child: Container(
+              height: 50,
+              width: 275,
+              decoration: BoxDecoration(
+                  color: Color.fromRGBO(195, 175, 152, 1),
+                  borderRadius: BorderRadius.all(Radius.circular(8)),
+                  boxShadow: <BoxShadow>[
+                    BoxShadow(
+                      color: Color.fromRGBO(0, 0, 0, 0.3),
+                      blurRadius: 2.0,
+                      offset: Offset(0, 3),
+                    )
+                  ]),
+              child: Align(
+                child: Text(
+                  "Something",
+                  style: TextStyle(fontFamily: "OpenSans"),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

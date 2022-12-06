@@ -41,6 +41,8 @@ dependencies:
   flutter_session_manager: ^1.0.3
   swipe_cards: ^1.0.0
   flutter_tindercard: ^0.1.7
+  flip_card: ^0.6.0
+  flutter_native_splash: ^2.2.16
 
 dev_dependencies:
   flutter_test:
@@ -69,6 +71,9 @@ flutter:
     - assets/image/
     - assets/bookspreview/
     - assets/json/
+    - figma/artistic/
+    - figma/unartistic/
+    - figma/ComicsAndManga/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -86,6 +91,9 @@ flutter:
    - family: CustomIcons
      fonts:
        - asset: fonts/CustomIcons.ttf
+   - family: OpenSans
+     fonts:
+       - asset: fonts/OpenSans_Condensed-Regular.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

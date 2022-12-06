@@ -6,7 +6,7 @@
     "year": 1863,
     "genre_book": "Романы",
     "age_permission": 16,
-    "annotation_book": "Торт наполееон оч вкусный",
+    "annotation_book": "Торт наполееон оч в1кусный",
     "book_image": "assets/bookspreview/WaP.jpg"
   },
   {
@@ -16,7 +16,7 @@
     "year": 1863,
     "genre_book": "Романы",
     "age_permission": 16,
-    "annotation_book": "Торт наполееон оч вкусный",
+    "annotation_book": "Торт наполееон оч в2кусный",
     "book_image": "assets/bookspreview/WaP.jpg"
   },
   {
@@ -26,7 +26,7 @@
     "year": 1863,
     "genre_book": "Романы",
     "age_permission": 16,
-    "annotation_book": "Торт наполееон оч вкусный",
+    "annotation_book": "Торт наполееон оч в3кусный",
     "book_image": "assets/bookspreview/WaP.jpg"
   },
   {
@@ -36,7 +36,7 @@
     "year": 1863,
     "genre_book": "Романы",
     "age_permission": 16,
-    "annotation_book": "Торт наполееон оч вкусный",
+    "annotation_book": "Торт наполееон оч в4кусный",
     "book_image": "assets/bookspreview/WaP.jpg"
   },
   {
@@ -46,7 +46,7 @@
     "year": 1863,
     "genre_book": "Романы",
     "age_permission": 16,
-    "annotation_book": "Торт наполееон оч вкусный",
+    "annotation_book": "Торт наполееон оч в5кусный",
     "book_image": "assets/bookspreview/WaP.jpg"
   },
   {
@@ -56,7 +56,17 @@
     "year": 1863,
     "genre_book": "Романы",
     "age_permission": 16,
-    "annotation_book": "Торт наполееон оч вкусный",
+    "annotation_book": "Торт наполееон оч в6кусный",
+    "book_image": "assets/bookspreview/WaP.jpg"
+  },
+  {
+    "id_book": "7",
+    "author_book": "Лев Толстой",
+    "book_name": "Война и мир",
+    "year": 1863,
+    "genre_book": "Романы",
+    "age_permission": 16,
+    "annotation_book": "Торт наполееон оч в7кусный",
     "book_image": "assets/bookspreview/WaP.jpg"
   }
 ]

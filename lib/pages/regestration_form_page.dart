@@ -157,6 +157,7 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
                         style: TextStyle(
                           fontSize: 40,
                           color: Color.fromRGBO(219, 216, 178, 1),
+                          fontFamily: "OpenSans",
                         ),
                       ),
                     ],

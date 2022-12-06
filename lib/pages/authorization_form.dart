@@ -73,6 +73,7 @@ class _AuthorizationFormPageState extends State<AuthorizationFormPage> {
                     style: TextStyle(
                       fontSize: 50,
                       color: Color.fromRGBO(219, 216, 178, 1),
+                      fontFamily: "OpenSans",
                     ),
                   ),
                   alignment: Alignment.topCenter,
@@ -166,7 +167,10 @@ class _AuthorizationFormPageState extends State<AuthorizationFormPage> {
                 Padding(
                   padding: EdgeInsets.fromLTRB(39, 22, 39, 2),
                   child: ElevatedButton(
-                    onPressed: startAuthorization,
+                     onPressed: startAuthorization,
+                   // onPressed: (() {
+                    //  Navigator.pushNamed(context, Pages.FooterPage);
+                   // }),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color.fromRGBO(195, 175, 152, 1),
                     ),
